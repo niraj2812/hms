@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 Apr, 2014 5:49:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.prag.hms.hibernate.pojo.UserAccess" table="user_access" catalog="hms">
+        <id name="loginName" type="string">
+            <column name="Login_name" length="40" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="userMasterByCreatedBy" class="com.prag.hms.hibernate.pojo.UserMaster" fetch="select">
+            <column name="Created_By" length="40" />
+        </many-to-one>
+        <many-to-one name="userMasterByUserId" class="com.prag.hms.hibernate.pojo.UserMaster" fetch="select">
+            <column name="User_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userMasterByModifiedBy" class="com.prag.hms.hibernate.pojo.UserMaster" fetch="select">
+            <column name="Modified_BY" length="40" />
+        </many-to-one>
+        <property name="entityStatus" type="string">
+            <column name="Entity_Status" length="40" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="200" />
+        </property>
+        <property name="passwordExpDate" type="date">
+            <column name="Password_EXP_Date" length="10" />
+        </property>
+        <property name="dataSource" type="string">
+            <column name="Data_Source" length="40" />
+        </property>
+        <property name="designation" type="string">
+            <column name="Designation" length="40" />
+        </property>
+        <property name="managerId" type="string">
+            <column name="Manager_ID" length="40" />
+        </property>
+        <property name="deptId" type="string">
+            <column name="Dept_ID" length="40" />
+        </property>
+        <property name="hospitalId" type="string">
+            <column name="Hospital_ID" length="40" />
+        </property>
+        <property name="creationDate" type="date">
+            <column name="Creation_Date" length="10" />
+        </property>
+        <property name="modifiedDate" type="date">
+            <column name="Modified_Date" length="10" />
+        </property>
+        <set name="roleses" inverse="false" table="role_user_map" fetch="join">
+            <key>
+                <column name="LOGIN_ID" length="40" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.prag.hms.hibernate.pojo.Roles">
+                <column name="ROLE_ID" length="40" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

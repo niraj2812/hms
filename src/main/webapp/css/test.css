@@ -1,0 +1,68 @@
+/* 
+    Document   : test
+    Created on : 26 Apr, 2014, 12:34:22 PM
+    Author     : Admin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* entire container, keeps perspective */
+.metro .flip-container {
+    perspective: 1000;
+}
+/* flip the pane when hovered */
+.metro  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.metro .flip-container, .front, .back {
+    width: 320px;
+    height: 480px;
+}
+
+/* flip speed goes here */
+.metro .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide back of pane during swap */
+.metro .front, .back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.metro .front {
+    z-index: 2;
+}
+
+/* back, initially hidden pane */
+.metro .back {
+    transform: rotateY(180deg);
+}
+
+.metro .vertical.flip-container {
+    position: relative;
+}
+
+.metro .vertical .back {
+    transform: rotateX(180deg);
+}
+
+.metro .vertical.flip-container .flipper {
+    transform-origin: 100% 213.5px; /* half of height */
+}
+
+.metro .vertical.flip-container:hover .flipper {
+    transform: rotateX(-180deg);
+}
+.metro .flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+    transform: rotateY(180deg);
+}
+

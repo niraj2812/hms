@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
+    <beans:import  resource="applicationContext.xml"/>
+       
+<!--    <beans:bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <beans:property name="configLocation" value="WEB-INF/hibernate.cfg.xml"/>
+    </beans:bean>-->
+    <beans:bean id="userAccessDaoImpl" class="com.prag.hms.hibernate.dao.impl.UserAccessDaoImpl">
+        <beans:property name="fact" ref="sessionFactory"/>
+    </beans:bean>
+    <beans:bean id="userDetailServiceImpl" class="com.prag.hms.hibernate.dao.impl.UserDetailServiceImpl">
+        <beans:property name="userAccessDao" ref="userAccessDaoImpl"/>
+    </beans:bean>
+   
+    <http auto-config='true'  use-expressions="true" access-denied-page="/access-denied-page.jsp">
+        <session-management>
+            <concurrency-control max-sessions="1"  error-if-maximum-exceeded="true" />
+        </session-management>
+        <intercept-url pattern="/css/**" access="permitAll"/>
+        <intercept-url pattern="/data/**" access="permitAll"/>
+        <intercept-url pattern="/fonts/**" access="permitAll"/>
+        <intercept-url pattern="/images/**" access="permitAll"/>
+        <intercept-url pattern="/js/**" access="permitAll"/>
+        
+        <intercept-url pattern="/hms-home.html*" access="permitAll"/>
+        <intercept-url pattern="/login.jsp*" access="permitAll"/>
+        <intercept-url pattern="/patient/login-module/patient-registeration.jsp*" access="permitAll"/>
+        
+        <!--<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>-->
+        <form-login login-page='/login.jsp' default-target-url='/success.jsp'
+                    always-use-default-target='true'/>
+    </http>
+    
+    
+    <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="userDetailServiceImpl"/>
+    </beans:bean>
+    <beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+        <beans:property name="providers">
+            <beans:list>
+                <beans:ref local="daoAuthenticationProvider"/>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDetailServiceImpl">
+            <!--<password-encoder hash="sha-256" />-->
+            
+        </authentication-provider>
+    </authentication-manager>
+<!--    <authentication-manager>  
+        <authentication-provider>  
+            <password-encoder hash="sha-256" />
+            <user-service >  
+                
+                <user name="niraj" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" authorities="ROLE_USER" />  
+            </user-service>  
+                        <jdbc-user-service data-source-ref="dataSource"  
+                          users-by-username-query="select username,password, 'true' as enabled from USER_DETAILS where username=?"  
+                          authorities-by-username-query="select USER_DETAILS.username , USER_AUTH.AUTHORITY as authorities from USER_DETAILS,USER_AUTH  
+            where USER_DETAILS.username = ? AND USER_DETAILS.username=USER_AUTH.USERNAME "/>  
+        </authentication-provider>  
+    </authentication-manager>  -->
+</beans:beans>  

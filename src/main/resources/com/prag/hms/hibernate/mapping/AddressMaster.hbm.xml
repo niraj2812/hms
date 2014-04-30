@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 Apr, 2014 5:49:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.prag.hms.hibernate.pojo.AddressMaster" table="address_master" catalog="hms">
+        <id name="id" type="string">
+            <column name="ID" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="homeAddress1" type="string">
+            <column name="Home_Address1" length="40" />
+        </property>
+        <property name="homeAddress2" type="string">
+            <column name="Home_Address2" length="40" />
+        </property>
+        <property name="homeCity" type="string">
+            <column name="Home_City" length="40" />
+        </property>
+        <property name="homeState" type="string">
+            <column name="Home_State" length="40" />
+        </property>
+        <property name="homePinCode" type="string">
+            <column name="Home_Pin_Code" length="40" />
+        </property>
+        <property name="homeCountry" type="string">
+            <column name="Home_Country" length="40" />
+        </property>
+        <property name="officeAddress1" type="string">
+            <column name="Office_Address1" length="40" />
+        </property>
+        <property name="officeAddress2" type="string">
+            <column name="Office_Address2" length="40" />
+        </property>
+        <property name="officeCity" type="string">
+            <column name="Office_City" length="40" />
+        </property>
+        <property name="officeState" type="string">
+            <column name="Office_State" length="40" />
+        </property>
+        <property name="officePinCode" type="string">
+            <column name="Office_Pin_Code" length="40" />
+        </property>
+        <property name="officeCountry" type="string">
+            <column name="Office_Country" length="40" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="Created_By" length="40" />
+        </property>
+        <property name="creationDate" type="date">
+            <column name="Creation_Date" length="10" />
+        </property>
+        <property name="modifiedBy" type="string">
+            <column name="Modified_BY" length="40" />
+        </property>
+        <property name="modifiedDate" type="date">
+            <column name="Modified_Date" length="10" />
+        </property>
+        <property name="dataSource" type="string">
+            <column name="Data_Source" length="40" />
+        </property>
+        <property name="entityStatus" type="string">
+            <column name="Entity_Status" length="40" />
+        </property>
+        <property name="entityType" type="string">
+            <column name="Entity_Type" length="40" />
+        </property>
+        <set name="userMasters" inverse="true">
+            <key>
+                <column name="ADDRESS_ID" length="40" unique="true" />
+            </key>
+            <one-to-many class="com.prag.hms.hibernate.pojo.UserMaster" />
+        </set>
+    </class>
+</hibernate-mapping>

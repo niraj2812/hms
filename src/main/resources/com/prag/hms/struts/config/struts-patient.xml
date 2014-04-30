@@ -1,0 +1,13 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: Niraj-->
+ 
+<struts>
+    <package name="patient" extends="struts-default" namespace="/patient">
+        
+       <constant name="struts.devMode" value="true"/>
+       <action name="register" class=""></action>
+    </package>
+</struts>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 Apr, 2014 5:49:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.prag.hms.hibernate.pojo.UserMaster" table="user_master" catalog="hms">
+        <id name="userId" type="string">
+            <column name="USER_ID" length="40" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="contactMaster" class="com.prag.hms.hibernate.pojo.ContactMaster" fetch="select">
+            <column name="CONTACT_ID" length="40" unique="true" />
+        </many-to-one>
+        <many-to-one name="addressMaster" class="com.prag.hms.hibernate.pojo.AddressMaster" fetch="select">
+            <column name="ADDRESS_ID" length="40" unique="true" />
+        </many-to-one>
+        <property name="entityStatus" type="string">
+            <column name="ENTITY_STATUS" length="40" />
+        </property>
+        <property name="firstName" type="string" >
+            <column name="FIRST_NAME" length="40" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="MIDDLE_NAME" length="40" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="40" />
+        </property>
+        <property name="gender" type="character">
+            <column name="GENDER" length="1" />
+        </property>
+        <property name="bloodGroup" type="character">
+            <column name="BLOOD_GROUP" length="3" />
+        </property>
+        <property name="dob" type="date">
+            <column name="DOB" length="10" />
+        </property>
+        <property name="fatherFirstName" type="string">
+            <column name="FATHER_FIRST_NAME" length="40" />
+        </property>
+        <property name="fatherLastName" type="string">
+            <column name="FATHER_LAST_NAME" length="40" />
+        </property>
+        <property name="motherFirstName" type="string">
+            <column name="MOTHER_FIRST_NAME" length="40" />
+        </property>
+        <property name="motherLastName" type="string">
+            <column name="MOTHER_LAST_NAME" length="40" />
+        </property>
+        <property name="firstLanguage" type="string">
+            <column name="FIRST_LANGUAGE" length="40" />
+        </property>
+        <property name="secondLanguage" type="string">
+            <column name="SECOND_LANGUAGE" length="40" />
+        </property>
+        <property name="thirdLanguage" type="string">
+            <column name="THIRD_LANGUAGE" length="40" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CREATED_BY" length="40" />
+        </property>
+        <property name="creationDate" type="date">
+            <column name="CREATION_DATE" length="10" />
+        </property>
+        <property name="modifiedBy" type="string">
+            <column name="MODIFIED_BY" length="40" />
+        </property>
+        <property name="modifiedDate" type="date">
+            <column name="MODIFIED_DATE" length="10" />
+        </property>
+        <property name="dataSource" type="string">
+            <column name="DATA_SOURCE" length="40" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="NATIONALITY" length="40" />
+        </property>
+        <property name="hospitalId" type="string">
+            <column name="HOSPITAL_ID" length="40" />
+        </property>
+        <set name="userAccessesForModifiedBy" inverse="true">
+            <key>
+                <column name="Modified_BY" length="40" />
+            </key>
+            <one-to-many class="com.prag.hms.hibernate.pojo.UserAccess" />
+        </set>
+        <set name="userAccessesForCreatedBy" inverse="true">
+            <key>
+                <column name="Created_By" length="40" />
+            </key>
+            <one-to-many class="com.prag.hms.hibernate.pojo.UserAccess" />
+        </set>
+        <set name="userAccessesForUserId" inverse="true">
+            <key>
+                <column name="User_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.prag.hms.hibernate.pojo.UserAccess" />
+        </set>
+    </class>
+</hibernate-mapping>
