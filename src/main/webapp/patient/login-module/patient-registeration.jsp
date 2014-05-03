@@ -10,7 +10,7 @@
     </head>
     <body>
 
-        <s:form action="register" namespace="/patient">
+        <s:form action="checkAvailability" namespace="/patient">
 
             <s:textfield name="userAccess.loginName" key="user.loginName"/>
             <s:password name="userAccess.password" key="user.password"/>

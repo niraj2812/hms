@@ -5,10 +5,13 @@
 package com.prag.hms.struts.patient.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.prag.hms.hibernate.dao.UserAccessDao;
 import com.prag.hms.hibernate.pojo.AddressMaster;
 import com.prag.hms.hibernate.pojo.ContactMaster;
 import com.prag.hms.hibernate.pojo.UserAccess;
 import com.prag.hms.hibernate.pojo.UserMaster;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -16,11 +19,20 @@ import com.prag.hms.hibernate.pojo.UserMaster;
  */
 public class PatientRegisterAction extends ActionSupport {
 
+    private UserAccessDao userAccessDao;
     private UserAccess userAccess;
     private UserMaster userMaster;
     private ContactMaster contactMaster;
     private AddressMaster addressMaster;
     private String confirmPassword;
+
+    public UserAccessDao getUserAccessDao() {
+        return userAccessDao;
+    }
+
+    public void setUserAccessDao(UserAccessDao userAccessDao) {
+        this.userAccessDao = userAccessDao;
+    }
 
     public String getConfirmPassword() {
         return confirmPassword;
@@ -62,41 +74,32 @@ public class PatientRegisterAction extends ActionSupport {
         this.addressMaster = addressMaster;
     }
 
+    public String checkAvailibilityOfLoginName() {
+        String result = "failure";
+        // HttpServletResponse response = ServletActionContext.getResponse();
+        System.out.println("loginName=" + userAccess.getLoginName());
+        try {
+            boolean available = userAccessDao.checkAvailabilityOfLoginName(userAccess.getLoginName());
+            System.out.println("available status=" + available);
+            if (available) {
+                result = "success";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return result;
+    }
+
     public String registerUser() {
         String result = "failure";
 
         //if (userAccess != null && userMaster != null && addressMaster != null && contactMaster != null) {
-            result = "success";
-            System.out.println(userMaster.getUserId());
-            System.out.println(contactMaster.getEmail());
+        result = "success";
+        System.out.println(userMaster.getUserId());
+        System.out.println(contactMaster.getEmail());
         //}
 
         return result;
     }
 }
-//    private String loginName;
-//    private String password;
-//    private String firstName;
-//    private String middleName;
-//    private String lastName;
-//    private Date dob;
-//    private char gender;
-//    private String fatherFirstName;
-//    private String fatherLastName;
-//    private String motherFirstName;
-//    private String motherLastName;
-//    private String firstLanguage;
-//    private String secondLanguage;
-//    private String thirdLanguage;
-//    private String nationality;
-//    private String homeAddress1;
-//    private String homeAddress2;
-//    private String homeCity;
-//    private String homeState;
-//    private String homePinCode;
-//    private String homeCountry ;
-//    private String officeAddress1;
-//    private String officeAddress2;
-//    private String officeCity;
-//    private String officeState;
-    //Office Pin Code Office Country Email Home Phone Office phone Mobile No Energency Contact No Relation with contact number

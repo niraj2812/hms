@@ -4,6 +4,7 @@
  */
 package com.prag.hms;
 
+import com.prag.hms.hibernate.pojo.UserAccess;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -19,6 +20,9 @@ public class TestCon {
             SessionFactory sf = conf.buildSessionFactory();
             if (sf != null) {
                 System.out.println("Connected!!");
+                UserAccess userAccess = (UserAccess) sf.openSession().get(UserAccess.class, "niraj2812");
+                System.out.println(userAccess.getLoginName());
+                System.out.println(userAccess.getEntityStatus());
             } else {
                 System.out.println("Not Connected!!!");
             }

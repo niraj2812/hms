@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--    <property name="hibernate.jndi.url">iiop://localhost:4848</property>
+        <property name="hibernate.jndi.class">com.sun.enterprise.naming.SerialInitContextFactory</property>
+        <property name="hibernate.connection.datasource">HmsConPoolJndi</property>-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hms</property>
+        <property name="hibernate.connection.username">niraj</property>
+        <property name="hibernate.connection.password">niraj</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">true</property>
+        
+        <mapping resource="com/prag/hms/hibernate/mapping/AclObjectIdentity.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/ContactMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/UserMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/QuestionUserMap.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/UserAccess.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/SecurityQuestionMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/AclEntry.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/AclSid.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/Roles.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/AddressMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/AclClass.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/ActionTypes.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

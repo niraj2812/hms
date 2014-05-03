@@ -7,10 +7,8 @@ package com.prag.hms.hibernate.dao.impl;
 import com.prag.hms.hibernate.dao.UserAccessDao;
 import com.prag.hms.hibernate.pojo.UserAccess;
 import java.util.List;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -36,25 +34,22 @@ public class UserAccessDaoImpl implements UserAccessDao {
         fact.getCurrentSession().update(user);
     }
 
-    public UserAccess findUser(int userId) {
-        return (UserAccess) fact.getCurrentSession().get(UserAccess.class, userId);
+//    public UserAccess findUser(int userId) {
+//        return (UserAccess) fact.getCurrentSession().get(UserAccess.class, userId);
+//    }
+    public UserAccess findUserByName(String userName) {
+       
+        UserAccess ua = (UserAccess) fact.openSession().get(UserAccess.class, userName);
+        return ua;
     }
 
-    public UserAccess findUserByName(String userName) {
-        UserAccess userAccess = null;
-        Transaction tx = null;
-        Session sess = fact.getCurrentSession();
-        try {
-            tx = sess.beginTransaction();
-            userAccess = (UserAccess) sess.createCriteria(UserAccess.class).add(Restrictions.eq("loginName", userName)).uniqueResult();
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
+    public boolean checkAvailabilityOfLoginName(String loginName) {
+        boolean result = false;
+        if (findUserByName(loginName) != null) {
+            System.out.println("Ok present!!");
+            result = true;
         }
-
-        return userAccess;
+        return result;
     }
 
     public List<UserAccess> getAllUsers() {

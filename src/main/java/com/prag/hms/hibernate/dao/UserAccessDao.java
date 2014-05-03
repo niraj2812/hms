@@ -17,9 +17,10 @@ public interface UserAccessDao {
 
     void editUser(UserAccess user);
 
-    UserAccess findUser(int userId);
-
+    // UserAccess findUser(String loginName);
     UserAccess findUserByName(String userName);
+
+    boolean checkAvailabilityOfLoginName(String loginName);
 
     List<UserAccess> getAllUsers();
 }

@@ -12,5 +12,10 @@
             <result name="input">/patient/login-module/patient-registeration.jsp</result>
             <result name="failure">/failure.jsp</result>
         </action>
+        <action name="checkAvailability" class="userRegisteration" method="checkAvailibilityOfLoginName">
+            <result name="success">/success.jsp</result>
+            <result name="failure">/failure.jsp</result>
+                  
+        </action>
     </package>
 </struts>

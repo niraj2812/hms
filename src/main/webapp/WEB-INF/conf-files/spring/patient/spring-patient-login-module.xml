@@ -17,5 +17,10 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 ">
   
-    <bean id="userRegisteration" class="com.prag.hms.struts.patient.actions.PatientRegisterAction"></bean>
+    <bean id="userRegisteration" class="com.prag.hms.struts.patient.actions.PatientRegisterAction">
+        <property name="userAccessDao">
+            <ref bean="userAccessDaoImpl"/>
+        </property>
+    </bean>
+
 </beans>
