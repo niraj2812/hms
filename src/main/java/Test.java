@@ -78,20 +78,20 @@ public class Test {
             } else {
                 System.out.println("Not connected!!!");
             }
-//            Transaction tx = sess.beginTransaction();
-//            sess.save(cm);
-//            sess.save(am);
-//            sess.save(um);
-//            sess.save(ua);
-//            
-//            cm.setUserAccessByCreatedBy(ua);
+            Transaction tx = sess.beginTransaction();
+            sess.save(cm);
+            sess.save(am);
+            sess.save(um);
+            sess.save(ua);
+            
+            cm.setUserAccessByCreatedBy(ua);
 //            //created by updation;
 //
 //
 ////
 ////
-//            tx.commit();
-//            sess.refresh(cm);
+            tx.commit();
+            sess.refresh(cm);
 //            
             // System.out.println(cm.getId());
         } catch (Exception e) {

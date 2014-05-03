@@ -17,5 +17,5 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 ">
   
-    <bean id="test" class="com.prag.hms.struts.patient.actions.LoginAction"></bean>
+    <bean id="userRegisteration" class="com.prag.hms.struts.patient.actions.PatientRegisterAction"></bean>
 </beans>

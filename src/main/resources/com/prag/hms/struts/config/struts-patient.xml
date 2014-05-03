@@ -7,7 +7,7 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
     <package name="patient" extends="struts-default" namespace="/patient">
-        <action name="register" class="test">
+        <action name="register" class="userRegisteration" method="registerUser">
             <result>/success.jsp</result>
             <result name="input">/patient/login-module/patient-registeration.jsp</result>
             <result name="failure">/failure.jsp</result>
