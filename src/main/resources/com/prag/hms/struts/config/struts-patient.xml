@@ -5,9 +5,12 @@
 <!-- Author: Niraj-->
  
 <struts>
+    <constant name="struts.devMode" value="true"/>
     <package name="patient" extends="struts-default" namespace="/patient">
-        
-       <constant name="struts.devMode" value="true"/>
-       <action name="register" class=""></action>
+        <action name="register" class="test">
+            <result>/success.jsp</result>
+            <result name="input">/patient/login-module/patient-registeration.jsp</result>
+            <result name="failure">/failure.jsp</result>
+        </action>
     </package>
 </struts>

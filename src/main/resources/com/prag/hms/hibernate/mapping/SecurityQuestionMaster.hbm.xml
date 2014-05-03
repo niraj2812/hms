@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 May, 2014 5:57:34 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.SecurityQuestionMaster" table="security_question_master">
+    <id name="questionId" type="string">
+      <column length="40" name="question_id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByCreatedBy">
+      <column length="40" name="created_by"/>
+    </many-to-one>
+    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByModifiedBy">
+      <column length="40" name="modified_by"/>
+    </many-to-one>
+    <property name="question" type="string">
+      <column length="200" name="question" not-null="true"/>
+    </property>
+    <property name="entityStatus" type="string">
+      <column length="40" name="entity_status" not-null="true"/>
+    </property>
+    <property name="creationDate" type="date">
+      <column length="10" name="creation_date"/>
+    </property>
+    <property name="modifiedDate" type="date">
+      <column length="10" name="modified_date"/>
+    </property>
+    <property name="dataSource" type="string">
+      <column length="40" name="data_source" not-null="true"/>
+    </property>
+    <set inverse="true" name="questionUserMaps">
+      <key>
+        <column length="40" name="question_id" not-null="true"/>
+      </key>
+      <one-to-many class="com.prag.hms.hibernate.pojo.QuestionUserMap"/>
+    </set>
+  </class>
+</hibernate-mapping>

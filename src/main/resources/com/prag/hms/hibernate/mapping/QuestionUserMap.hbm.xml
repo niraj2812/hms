@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 May, 2014 5:57:34 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.QuestionUserMap" table="question_user_map">
+    <composite-id class="com.prag.hms.hibernate.pojo.QuestionUserMapId" name="id">
+      <key-property name="loginId" type="string">
+        <column length="40" name="login_id"/>
+      </key-property>
+      <key-property name="questionId" type="string">
+        <column length="40" name="question_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" insert="false" name="userAccessByLoginId" update="false">
+      <column length="40" name="login_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.prag.hms.hibernate.pojo.SecurityQuestionMaster" fetch="select" insert="false" name="securityQuestionMaster" update="false">
+      <column length="40" name="question_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByCreatedBy">
+      <column length="40" name="Created_By" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByModifiedBy">
+      <column length="40" name="Modified_BY"/>
+    </many-to-one>
+    <property name="answer" type="string">
+      <column length="200" name="answer" not-null="true"/>
+    </property>
+    <property name="entityStatus" type="string">
+      <column length="40" name="entity_status" not-null="true"/>
+    </property>
+    <property name="creationDate" type="date">
+      <column length="10" name="Creation_Date" not-null="true"/>
+    </property>
+    <property name="modifiedDate" type="date">
+      <column length="10" name="Modified_Date"/>
+    </property>
+    <property name="dataSource" type="string">
+      <column length="40" name="Data_Source" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

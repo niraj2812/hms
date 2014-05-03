@@ -1,5 +1,5 @@
 package com.prag.hms.hibernate.pojo;
-// Generated 22 Apr, 2014 5:49:36 PM by Hibernate Tools 3.2.1.GA
+// Generated 1 May, 2014 5:57:32 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,14 +13,16 @@ public class Roles  implements java.io.Serializable {
 
 
      private String roleId;
+     private UserAccess userAccess;
      private String name;
      private String dataSource;
      private String entityStatus;
-     private String createdBy;
      private Date creationDate;
      private String modifiedBy;
      private Date modifiedDate;
      private Set userAccesses = new HashSet(0);
+     private Set actionTypeses = new HashSet(0);
+     private Set aclSids = new HashSet(0);
 
     public Roles() {
     }
@@ -29,16 +31,18 @@ public class Roles  implements java.io.Serializable {
     public Roles(String roleId) {
         this.roleId = roleId;
     }
-    public Roles(String roleId, String name, String dataSource, String entityStatus, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate, Set userAccesses) {
+    public Roles(String roleId, UserAccess userAccess, String name, String dataSource, String entityStatus, Date creationDate, String modifiedBy, Date modifiedDate, Set userAccesses, Set actionTypeses, Set aclSids) {
        this.roleId = roleId;
+       this.userAccess = userAccess;
        this.name = name;
        this.dataSource = dataSource;
        this.entityStatus = entityStatus;
-       this.createdBy = createdBy;
        this.creationDate = creationDate;
        this.modifiedBy = modifiedBy;
        this.modifiedDate = modifiedDate;
        this.userAccesses = userAccesses;
+       this.actionTypeses = actionTypeses;
+       this.aclSids = aclSids;
     }
    
     public String getRoleId() {
@@ -47,6 +51,13 @@ public class Roles  implements java.io.Serializable {
     
     public void setRoleId(String roleId) {
         this.roleId = roleId;
+    }
+    public UserAccess getUserAccess() {
+        return this.userAccess;
+    }
+    
+    public void setUserAccess(UserAccess userAccess) {
+        this.userAccess = userAccess;
     }
     public String getName() {
         return this.name;
@@ -68,13 +79,6 @@ public class Roles  implements java.io.Serializable {
     
     public void setEntityStatus(String entityStatus) {
         this.entityStatus = entityStatus;
-    }
-    public String getCreatedBy() {
-        return this.createdBy;
-    }
-    
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
     }
     public Date getCreationDate() {
         return this.creationDate;
@@ -103,6 +107,20 @@ public class Roles  implements java.io.Serializable {
     
     public void setUserAccesses(Set userAccesses) {
         this.userAccesses = userAccesses;
+    }
+    public Set getActionTypeses() {
+        return this.actionTypeses;
+    }
+    
+    public void setActionTypeses(Set actionTypeses) {
+        this.actionTypeses = actionTypeses;
+    }
+    public Set getAclSids() {
+        return this.aclSids;
+    }
+    
+    public void setAclSids(Set aclSids) {
+        this.aclSids = aclSids;
     }
 
 

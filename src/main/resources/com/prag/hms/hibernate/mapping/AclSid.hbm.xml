@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 May, 2014 5:57:34 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.AclSid" table="acl_sid">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.prag.hms.hibernate.pojo.Roles" fetch="select" name="roles">
+      <column length="40" name="sid" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" insert="false" name="userAccess" update="false">
+      <column length="40" name="sid" not-null="true"/>
+    </many-to-one>
+    <property name="principal" type="boolean">
+      <column name="principal" not-null="true"/>
+    </property>
+    <set inverse="true" name="aclObjectIdentities">
+      <key>
+        <column name="owner_sid"/>
+      </key>
+      <one-to-many class="com.prag.hms.hibernate.pojo.AclObjectIdentity"/>
+    </set>
+    <set inverse="true" name="aclEntries">
+      <key>
+        <column name="sid" not-null="true"/>
+      </key>
+      <one-to-many class="com.prag.hms.hibernate.pojo.AclEntry"/>
+    </set>
+  </class>
+</hibernate-mapping>

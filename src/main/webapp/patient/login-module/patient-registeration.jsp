@@ -7,20 +7,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
     </head>
-
     <body>
-        <s:form action="register">
+        <s:form action="register" namespace="/patient">
             <s:textfield name="uname" key="patient.name"/>
             <s:password name="pass" key="patient.pass"/>
             <s:submit  value="Submit"/>
-
-        </s:form>
-
-
-
+       </s:form>
     </body>
 </html>

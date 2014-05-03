@@ -3,13 +3,13 @@
 <validators>
     <field name="uname">
         <field-validator type="required">
-            <param name="trim">true</param>
+            <!--<param name="trim">true</param>-->
             <message key="errors.required" />
         </field-validator>
     </field>
     <field name="pass">
         <field-validator type="required">
-            <param name="trim">true</param>
+            <!--<param name="trim">true</param>-->
             <message key="errors.required" />
         </field-validator>
     </field>

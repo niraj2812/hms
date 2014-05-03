@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 May, 2014 5:57:34 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.ActionTypes" table="action_types">
+    <id name="actionId" type="string">
+      <column length="40" name="action_id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="actionType" type="string">
+      <column length="40" name="action_type" unique="true"/>
+    </property>
+    <property name="actionDesc" type="string">
+      <column length="200" name="action_desc"/>
+    </property>
+    <property name="entityStatus" type="string">
+      <column length="40" name="entity_status"/>
+    </property>
+    <property name="dataSource" type="string">
+      <column length="40" name="data_source"/>
+    </property>
+    <property name="createdBy" type="string">
+      <column length="40" name="created_by"/>
+    </property>
+    <property name="createdDate" type="date">
+      <column length="10" name="created_date"/>
+    </property>
+    <property name="modifiedBy" type="string">
+      <column length="40" name="modified_by"/>
+    </property>
+    <property name="modifiedDate" type="date">
+      <column length="10" name="modified_date"/>
+    </property>
+    <set inverse="true" name="roleses" table="role_action_map">
+      <key>
+        <column length="40" name="ACTION_ID" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.prag.hms.hibernate.pojo.Roles">
+        <column length="40" name="ROLE_ID" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,5 +1,5 @@
 package com.prag.hms.hibernate.pojo;
-// Generated 22 Apr, 2014 5:49:36 PM by Hibernate Tools 3.2.1.GA
+// Generated 1 May, 2014 5:57:32 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,6 +13,8 @@ public class AddressMaster  implements java.io.Serializable {
 
 
      private String id;
+     private UserAccess userAccessByCreatedBy;
+     private UserAccess userAccessByModifiedBy;
      private String homeAddress1;
      private String homeAddress2;
      private String homeCity;
@@ -25,9 +27,7 @@ public class AddressMaster  implements java.io.Serializable {
      private String officeState;
      private String officePinCode;
      private String officeCountry;
-     private String createdBy;
      private Date creationDate;
-     private String modifiedBy;
      private Date modifiedDate;
      private String dataSource;
      private String entityStatus;
@@ -38,11 +38,21 @@ public class AddressMaster  implements java.io.Serializable {
     }
 
 	
-    public AddressMaster(String id) {
+    public AddressMaster(String id, String homeAddress1, String homeCity, String homeState, String homePinCode, String homeCountry, String dataSource, String entityStatus, String entityType) {
         this.id = id;
+        this.homeAddress1 = homeAddress1;
+        this.homeCity = homeCity;
+        this.homeState = homeState;
+        this.homePinCode = homePinCode;
+        this.homeCountry = homeCountry;
+        this.dataSource = dataSource;
+        this.entityStatus = entityStatus;
+        this.entityType = entityType;
     }
-    public AddressMaster(String id, String homeAddress1, String homeAddress2, String homeCity, String homeState, String homePinCode, String homeCountry, String officeAddress1, String officeAddress2, String officeCity, String officeState, String officePinCode, String officeCountry, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate, String dataSource, String entityStatus, String entityType, Set userMasters) {
+    public AddressMaster(String id, UserAccess userAccessByCreatedBy, UserAccess userAccessByModifiedBy, String homeAddress1, String homeAddress2, String homeCity, String homeState, String homePinCode, String homeCountry, String officeAddress1, String officeAddress2, String officeCity, String officeState, String officePinCode, String officeCountry, Date creationDate, Date modifiedDate, String dataSource, String entityStatus, String entityType, Set userMasters) {
        this.id = id;
+       this.userAccessByCreatedBy = userAccessByCreatedBy;
+       this.userAccessByModifiedBy = userAccessByModifiedBy;
        this.homeAddress1 = homeAddress1;
        this.homeAddress2 = homeAddress2;
        this.homeCity = homeCity;
@@ -55,9 +65,7 @@ public class AddressMaster  implements java.io.Serializable {
        this.officeState = officeState;
        this.officePinCode = officePinCode;
        this.officeCountry = officeCountry;
-       this.createdBy = createdBy;
        this.creationDate = creationDate;
-       this.modifiedBy = modifiedBy;
        this.modifiedDate = modifiedDate;
        this.dataSource = dataSource;
        this.entityStatus = entityStatus;
@@ -71,6 +79,20 @@ public class AddressMaster  implements java.io.Serializable {
     
     public void setId(String id) {
         this.id = id;
+    }
+    public UserAccess getUserAccessByCreatedBy() {
+        return this.userAccessByCreatedBy;
+    }
+    
+    public void setUserAccessByCreatedBy(UserAccess userAccessByCreatedBy) {
+        this.userAccessByCreatedBy = userAccessByCreatedBy;
+    }
+    public UserAccess getUserAccessByModifiedBy() {
+        return this.userAccessByModifiedBy;
+    }
+    
+    public void setUserAccessByModifiedBy(UserAccess userAccessByModifiedBy) {
+        this.userAccessByModifiedBy = userAccessByModifiedBy;
     }
     public String getHomeAddress1() {
         return this.homeAddress1;
@@ -156,26 +178,12 @@ public class AddressMaster  implements java.io.Serializable {
     public void setOfficeCountry(String officeCountry) {
         this.officeCountry = officeCountry;
     }
-    public String getCreatedBy() {
-        return this.createdBy;
-    }
-    
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
     public Date getCreationDate() {
         return this.creationDate;
     }
     
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-    public String getModifiedBy() {
-        return this.modifiedBy;
-    }
-    
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
     }
     public Date getModifiedDate() {
         return this.modifiedDate;

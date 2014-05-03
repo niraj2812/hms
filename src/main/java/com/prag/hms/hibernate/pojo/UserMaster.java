@@ -1,5 +1,5 @@
 package com.prag.hms.hibernate.pojo;
-// Generated 22 Apr, 2014 5:49:36 PM by Hibernate Tools 3.2.1.GA
+// Generated 1 May, 2014 5:57:32 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,89 +13,79 @@ public class UserMaster  implements java.io.Serializable {
 
 
      private String userId;
+     private UserAccess userAccessByCreatedBy;
      private ContactMaster contactMaster;
+     private UserAccess userAccessByModifiedBy;
      private AddressMaster addressMaster;
      private String entityStatus;
      private String firstName;
      private String middleName;
      private String lastName;
-     private Date dob;
-     private char gender;
-     private String bloodGroup;
      private String fatherFirstName;
      private String fatherLastName;
      private String motherFirstName;
      private String motherLastName;
+     private Date dob;
+     private char gender;
+     private String bloodGroup;
      private String firstLanguage;
      private String secondLanguage;
      private String thirdLanguage;
-     private String createdBy;
      private Date creationDate;
-     private String modifiedBy;
      private Date modifiedDate;
      private String dataSource;
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public char getGender() {
-        return gender;
-    }
-
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
      private String nationality;
      private String hospitalId;
-     private Set userAccessesForModifiedBy = new HashSet(0);
-     private Set userAccessesForCreatedBy = new HashSet(0);
-     private Set userAccessesForUserId = new HashSet(0);
+     private Set userAccesses = new HashSet(0);
 
     public UserMaster() {
     }
 
 	
-    public UserMaster(String userId) {
+    public UserMaster(String userId, ContactMaster contactMaster, AddressMaster addressMaster, String entityStatus, String firstName, String lastName, String fatherFirstName, String fatherLastName, String motherFirstName, String motherLastName, Date dob, char gender, String bloodGroup, String firstLanguage, String dataSource, String nationality) {
         this.userId = userId;
+        this.contactMaster = contactMaster;
+        this.addressMaster = addressMaster;
+        this.entityStatus = entityStatus;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherFirstName = fatherFirstName;
+        this.fatherLastName = fatherLastName;
+        this.motherFirstName = motherFirstName;
+        this.motherLastName = motherLastName;
+        this.dob = dob;
+        this.gender = gender;
+        this.bloodGroup = bloodGroup;
+        this.firstLanguage = firstLanguage;
+        this.dataSource = dataSource;
+        this.nationality = nationality;
     }
-    public UserMaster(String userId, ContactMaster contactMaster, AddressMaster addressMaster, String entityStatus, String firstName, String lastName, Date dob, String fatherFirstName, String fatherLastName, String motherFirstName, String motherLastName, String firstLanguage, String secondLanguage, String thirdLanguage, String createdBy, Date creationDate, String modifiedBy, Date modifiedDate, String dataSource, String nationality, String hospitalId, Set userAccessesForModifiedBy, Set userAccessesForCreatedBy, Set userAccessesForUserId) {
+    public UserMaster(String userId, UserAccess userAccessByCreatedBy, ContactMaster contactMaster, UserAccess userAccessByModifiedBy, AddressMaster addressMaster, String entityStatus, String firstName, String middleName, String lastName, String fatherFirstName, String fatherLastName, String motherFirstName, String motherLastName, Date dob, char gender, String bloodGroup, String firstLanguage, String secondLanguage, String thirdLanguage, Date creationDate, Date modifiedDate, String dataSource, String nationality, String hospitalId, Set userAccesses) {
        this.userId = userId;
+       this.userAccessByCreatedBy = userAccessByCreatedBy;
        this.contactMaster = contactMaster;
+       this.userAccessByModifiedBy = userAccessByModifiedBy;
        this.addressMaster = addressMaster;
        this.entityStatus = entityStatus;
        this.firstName = firstName;
+       this.middleName = middleName;
        this.lastName = lastName;
-       this.dob = dob;
        this.fatherFirstName = fatherFirstName;
        this.fatherLastName = fatherLastName;
        this.motherFirstName = motherFirstName;
        this.motherLastName = motherLastName;
+       this.dob = dob;
+       this.gender = gender;
+       this.bloodGroup = bloodGroup;
        this.firstLanguage = firstLanguage;
        this.secondLanguage = secondLanguage;
        this.thirdLanguage = thirdLanguage;
-       this.createdBy = createdBy;
        this.creationDate = creationDate;
-       this.modifiedBy = modifiedBy;
        this.modifiedDate = modifiedDate;
        this.dataSource = dataSource;
        this.nationality = nationality;
        this.hospitalId = hospitalId;
-       this.userAccessesForModifiedBy = userAccessesForModifiedBy;
-       this.userAccessesForCreatedBy = userAccessesForCreatedBy;
-       this.userAccessesForUserId = userAccessesForUserId;
+       this.userAccesses = userAccesses;
     }
    
     public String getUserId() {
@@ -105,12 +95,26 @@ public class UserMaster  implements java.io.Serializable {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+    public UserAccess getUserAccessByCreatedBy() {
+        return this.userAccessByCreatedBy;
+    }
+    
+    public void setUserAccessByCreatedBy(UserAccess userAccessByCreatedBy) {
+        this.userAccessByCreatedBy = userAccessByCreatedBy;
+    }
     public ContactMaster getContactMaster() {
         return this.contactMaster;
     }
     
     public void setContactMaster(ContactMaster contactMaster) {
         this.contactMaster = contactMaster;
+    }
+    public UserAccess getUserAccessByModifiedBy() {
+        return this.userAccessByModifiedBy;
+    }
+    
+    public void setUserAccessByModifiedBy(UserAccess userAccessByModifiedBy) {
+        this.userAccessByModifiedBy = userAccessByModifiedBy;
     }
     public AddressMaster getAddressMaster() {
         return this.addressMaster;
@@ -133,19 +137,19 @@ public class UserMaster  implements java.io.Serializable {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+    public String getMiddleName() {
+        return this.middleName;
+    }
+    
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
     public String getLastName() {
         return this.lastName;
     }
     
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-    public Date getDob() {
-        return this.dob;
-    }
-    
-    public void setDob(Date dob) {
-        this.dob = dob;
     }
     public String getFatherFirstName() {
         return this.fatherFirstName;
@@ -175,6 +179,27 @@ public class UserMaster  implements java.io.Serializable {
     public void setMotherLastName(String motherLastName) {
         this.motherLastName = motherLastName;
     }
+    public Date getDob() {
+        return this.dob;
+    }
+    
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+    public char getGender() {
+        return this.gender;
+    }
+    
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+    public String getBloodGroup() {
+        return this.bloodGroup;
+    }
+    
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
     public String getFirstLanguage() {
         return this.firstLanguage;
     }
@@ -196,26 +221,12 @@ public class UserMaster  implements java.io.Serializable {
     public void setThirdLanguage(String thirdLanguage) {
         this.thirdLanguage = thirdLanguage;
     }
-    public String getCreatedBy() {
-        return this.createdBy;
-    }
-    
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
     public Date getCreationDate() {
         return this.creationDate;
     }
     
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-    public String getModifiedBy() {
-        return this.modifiedBy;
-    }
-    
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
     }
     public Date getModifiedDate() {
         return this.modifiedDate;
@@ -245,26 +256,12 @@ public class UserMaster  implements java.io.Serializable {
     public void setHospitalId(String hospitalId) {
         this.hospitalId = hospitalId;
     }
-    public Set getUserAccessesForModifiedBy() {
-        return this.userAccessesForModifiedBy;
+    public Set getUserAccesses() {
+        return this.userAccesses;
     }
     
-    public void setUserAccessesForModifiedBy(Set userAccessesForModifiedBy) {
-        this.userAccessesForModifiedBy = userAccessesForModifiedBy;
-    }
-    public Set getUserAccessesForCreatedBy() {
-        return this.userAccessesForCreatedBy;
-    }
-    
-    public void setUserAccessesForCreatedBy(Set userAccessesForCreatedBy) {
-        this.userAccessesForCreatedBy = userAccessesForCreatedBy;
-    }
-    public Set getUserAccessesForUserId() {
-        return this.userAccessesForUserId;
-    }
-    
-    public void setUserAccessesForUserId(Set userAccessesForUserId) {
-        this.userAccessesForUserId = userAccessesForUserId;
+    public void setUserAccesses(Set userAccesses) {
+        this.userAccesses = userAccesses;
     }
 
 
