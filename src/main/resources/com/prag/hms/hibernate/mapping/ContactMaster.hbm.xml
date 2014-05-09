@@ -31,10 +31,10 @@
     <property name="relationWithContactPerson" type="string">
       <column length="40" name="RELATION_WITH_CONTACT_PERSON" not-null="true"/>
     </property>
-    <property name="creationDate" type="date">
+    <property name="creationDate" type="timestamp">
       <column length="10" name="CREATION_DATE"/>
     </property>
-    <property name="modifiedDate" type="date">
+    <property name="modifiedDate" type="timestamp">
       <column length="10" name="MODIFIED_DATE"/>
     </property>
     <property name="dataSource" type="string">

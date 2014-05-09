@@ -61,10 +61,10 @@
     <property name="thirdLanguage" type="string">
       <column length="40" name="THIRD_LANGUAGE"/>
     </property>
-    <property name="creationDate" type="date">
+    <property name="creationDate" type="timestamp">
       <column length="10" name="CREATION_DATE"/>
     </property>
-    <property name="modifiedDate" type="date">
+    <property name="modifiedDate" type="timestamp">
       <column length="10" name="MODIFIED_DATE"/>
     </property>
     <property name="dataSource" type="string">

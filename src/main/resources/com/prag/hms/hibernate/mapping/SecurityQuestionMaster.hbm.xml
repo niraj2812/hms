@@ -19,11 +19,11 @@
     <property name="entityStatus" type="string">
       <column length="40" name="entity_status" not-null="true"/>
     </property>
-    <property name="creationDate" type="date">
-      <column length="10" name="creation_date"/>
+    <property name="creationDate" type="timestamp">
+      <column length="10" name="creation_timestamp"/>
     </property>
-    <property name="modifiedDate" type="date">
-      <column length="10" name="modified_date"/>
+    <property name="modifiedDate" type="timestamp">
+      <column length="10" name="modified_timestamp"/>
     </property>
     <property name="dataSource" type="string">
       <column length="40" name="data_source" not-null="true"/>

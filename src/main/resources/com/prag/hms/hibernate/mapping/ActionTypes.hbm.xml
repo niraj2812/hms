@@ -22,13 +22,13 @@
     <property name="createdBy" type="string">
       <column length="40" name="created_by"/>
     </property>
-    <property name="createdDate" type="date">
+    <property name="createdDate" type="timestamp">
       <column length="10" name="created_date"/>
     </property>
     <property name="modifiedBy" type="string">
       <column length="40" name="modified_by"/>
     </property>
-    <property name="modifiedDate" type="date">
+    <property name="modifiedDate" type="timestamp">
       <column length="10" name="modified_date"/>
     </property>
     <set inverse="true" name="roleses" table="role_action_map">

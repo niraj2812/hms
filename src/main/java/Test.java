@@ -1,12 +1,10 @@
 
-import com.prag.hms.hibernate.pojo.AddressMaster;
-import com.prag.hms.hibernate.pojo.ContactMaster;
-import com.prag.hms.hibernate.pojo.NewHibernateUtil;
-import com.prag.hms.hibernate.pojo.UserAccess;
-import com.prag.hms.hibernate.pojo.UserMaster;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this template, choose Tools | Templates
@@ -17,85 +15,51 @@ import org.hibernate.Transaction;
  * @author Admin
  */
 public class Test {
-    
+
     public static void main(String[] args) {
-        
-        ContactMaster cm = new ContactMaster();
-        
-        cm.setEmail("niraj.singh2812@gmail.com");
-        cm.setEmergencyContactNo("89345834345");
-        cm.setRelationWithContactPerson("brother");
-        cm.setEntityStatus("ACTIVE");
-        cm.setDataSource("UI");
-        cm.setEntityType("USER");
-        cm.setHomePhone("8576894576");
-        cm.setCreationDate(new java.util.Date());
-        
-        AddressMaster am = new AddressMaster();
-        am.setEntityStatus("ACTIVE");
-        am.setDataSource("UI");
-        am.setHomeAddress1("jdfjlsldf");
-        am.setHomeCity("Varanasi");
-        am.setHomePinCode("79879");
-        am.setHomeState("UP");
-        am.setHomeCountry("India");
-        am.setCreationDate(new java.util.Date());
-        am.setEntityType("USER");
-        
-        UserMaster um = new UserMaster();
-        um.setAddressMaster(am);
-        um.setContactMaster(cm);
-        um.setDataSource("UI");
-        um.setFirstName("NIraj");
-        um.setMiddleName(null);
-        um.setLastName("Singh");        
-        um.setFatherFirstName("Sadanand");
-        um.setFatherLastName("Singh");
-        um.setEntityStatus("ACTIVE");
-        um.setBloodGroup("B+");
-        um.setFirstLanguage("Hindi");
-        um.setGender('M');
-        um.setMotherFirstName("Asha");
-        um.setMotherLastName("Devi");
-        um.setDob(new java.util.Date());
-        um.setNationality("INDIAN");
-        um.setDataSource("UI");
-        
-        UserAccess ua = new UserAccess();
-        ua.setLoginName("atul2812");
-        ua.setPassword("1234");
-        ua.setEntityStatus("ACTIVE");
-        ua.setDataSource("UI");
-        ua.setPasswordExpDate(new java.util.Date());
-        ua.setUserMaster(um);
-        
-        
+        int monthsToAdd = 4;
+
+        int monthsToSubtract = 10;
+        SimpleDateFormat dt1 = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        Date dt = new Date();
         try {
-            SessionFactory fact = NewHibernateUtil.getSessionFactory();
-            Session sess = fact.openSession();
-            if (sess != null) {
-                System.out.println("Connected");
-            } else {
-                System.out.println("Not connected!!!");
-            }
-            Transaction tx = sess.beginTransaction();
-            sess.save(cm);
-            sess.save(am);
-            sess.save(um);
-            sess.save(ua);
-            
-            cm.setUserAccessByCreatedBy(ua);
-//            //created by updation;
-//
-//
-////
-////
-            tx.commit();
-            sess.refresh(cm);
-//            
-            // System.out.println(cm.getId());
-        } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("date=" + dt1.parse(dt1.format(dt)));
+        } catch (ParseException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.MONTH, monthsToAdd);
+        System.out.println("cal=" + c.getTime());
+
+        System.out.println("Current date : " + (c.get(Calendar.MONTH) + 1)
+                + "-" + c.get(Calendar.DATE) + "-" + c.get(Calendar.YEAR));
+
+
+
+        // add months to current date
+
+        c.add(Calendar.MONTH, monthsToAdd);
+
+
+
+        System.out.println("Date (after): " + (c.get(Calendar.MONTH) + 1)
+                + "-" + c.get(Calendar.DATE) + "-" + c.get(Calendar.YEAR));
+
+
+
+        c = Calendar.getInstance();
+
+
+
+        c.add(Calendar.MONTH, -monthsToSubtract);
+
+
+
+        System.out.println("Date (before): " + (c.get(Calendar.MONTH) + 1)
+                + "-" + c.get(Calendar.DATE) + "-" + c.get(Calendar.YEAR));
+
+
+
     }
 }

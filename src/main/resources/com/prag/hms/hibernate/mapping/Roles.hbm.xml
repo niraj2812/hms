@@ -19,13 +19,13 @@
     <property name="entityStatus" type="string">
       <column length="40" name="ENTITY_STATUS"/>
     </property>
-    <property name="creationDate" type="date">
+    <property name="creationDate" type="timestamp">
       <column length="10" name="CREATION_DATE"/>
     </property>
     <property name="modifiedBy" type="string">
       <column length="40" name="MODIFIED_BY"/>
     </property>
-    <property name="modifiedDate" type="date">
+    <property name="modifiedDate" type="timestamp">
       <column length="10" name="MODIFIED_DATE"/>
     </property>
     <set inverse="false" name="userAccesses" table="role_user_map">

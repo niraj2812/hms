@@ -17,7 +17,7 @@ public class UserMaster  implements java.io.Serializable {
      private ContactMaster contactMaster;
      private UserAccess userAccessByModifiedBy;
      private AddressMaster addressMaster;
-     private String entityStatus;
+     private String entityStatus="ACTIVE";
      private String firstName;
      private String middleName;
      private String lastName;

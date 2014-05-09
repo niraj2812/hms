@@ -29,10 +29,10 @@
     <property name="entityStatus" type="string">
       <column length="40" name="entity_status" not-null="true"/>
     </property>
-    <property name="creationDate" type="date">
+    <property name="creationDate" type="timestamp">
       <column length="10" name="Creation_Date" not-null="true"/>
     </property>
-    <property name="modifiedDate" type="date">
+    <property name="modifiedDate" type="timestamp">
       <column length="10" name="Modified_Date"/>
     </property>
     <property name="dataSource" type="string">

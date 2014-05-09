@@ -7,14 +7,31 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
     <package name="patient" extends="struts-default" namespace="/patient">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+            <!--            <result-type name="tiles"
+            class="org.apache.struts2.views.tiles.TilesResult" />-->
+        </result-types> 
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+        </interceptors>
+        <action name="registerPage" class="userRegisteration">
+            <result name="success">/patient/login-module/patient-registeration.jsp</result>
+            <result name="input">/patient/login-module/patient-registeration.jsp</result>
+       
+        </action>
         <action name="register" class="userRegisteration" method="registerUser">
             <result>/success.jsp</result>
             <result name="input">/patient/login-module/patient-registeration.jsp</result>
             <result name="failure">/failure.jsp</result>
         </action>
         <action name="checkAvailability" class="userRegisteration" method="checkAvailibilityOfLoginName">
-            <result name="success">/success.jsp</result>
-            <result name="failure">/failure.jsp</result>
+            <result type="json">
+                <param name="root">isLoginNameAvailable</param>
+            </result>
+            <result name="input">/patient/login-module/patient-registeration.jsp</result>
+            
+            <!--<result name="failure">/failure.jsp</result>-->
                   
         </action>
     </package>

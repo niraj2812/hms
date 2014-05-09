@@ -16,7 +16,7 @@ public class UserAccess  implements java.io.Serializable {
      private UserMaster userMaster;
      private UserAccess userAccessByCreatedBy;
      private UserAccess userAccessByModifiedBy;
-     private String entityStatus;
+     private String entityStatus="ACTIVE";
      private String password;
      private Date passwordExpDate;
      private String dataSource;

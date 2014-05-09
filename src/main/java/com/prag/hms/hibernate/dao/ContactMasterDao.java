@@ -4,10 +4,13 @@
  */
 package com.prag.hms.hibernate.dao;
 
+import com.prag.hms.hibernate.pojo.ContactMaster;
+
 /**
  *
  * @author Admin
  */
 public interface ContactMasterDao {
-    
+    void addContact(ContactMaster contact);
+    void editContact(ContactMaster contact);
 }

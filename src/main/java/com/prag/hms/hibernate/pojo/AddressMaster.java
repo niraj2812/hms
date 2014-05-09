@@ -27,10 +27,10 @@ public class AddressMaster  implements java.io.Serializable {
      private String officeState;
      private String officePinCode;
      private String officeCountry;
-     private Date creationDate;
+     private Date creationDate=new java.util.Date();
      private Date modifiedDate;
      private String dataSource;
-     private String entityStatus;
+     private String entityStatus="ACTIVE";
      private String entityType;
      private Set userMasters = new HashSet(0);
 

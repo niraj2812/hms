@@ -17,10 +17,35 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 ">
   
-    <bean id="userRegisteration" class="com.prag.hms.struts.patient.actions.PatientRegisterAction">
+    
+    <bean id="addressMasterDao" class="com.prag.hms.hibernate.dao.impl.AddressMasterDaoImpl">
+        <property name="fact">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    <bean id="contactMasterDao" class="com.prag.hms.hibernate.dao.impl.ContactMasterDaoImpl">
+        <property name="fact">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    <bean id="userMasterDao" class="com.prag.hms.hibernate.dao.impl.UserMasterDaoImpl">
+        <property name="fact">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    <bean id="registerUserDao" class="com.prag.hms.hibernate.dao.impl.RegisterUserDaoImpl">
+        <property name="fact">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+    <bean id="userRegisteration" class="com.prag.hms.struts.patient.actions.PatientRegisterAction" scope="prototype">
         <property name="userAccessDao">
             <ref bean="userAccessDaoImpl"/>
         </property>
+        <property name="registerUserDao">
+            <ref bean="registerUserDao"/>
+        </property>
+        
     </bean>
 
 </beans>

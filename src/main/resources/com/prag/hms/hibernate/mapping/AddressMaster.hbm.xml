@@ -49,10 +49,10 @@
     <property name="officeCountry" type="string">
       <column length="40" name="Office_Country"/>
     </property>
-    <property name="creationDate" type="date">
+    <property name="creationDate" type="timestamp">
       <column length="10" name="Creation_Date"/>
     </property>
-    <property name="modifiedDate" type="date">
+    <property name="modifiedDate" type="timestamp">
       <column length="10" name="Modified_Date"/>
     </property>
     <property name="dataSource" type="string">
