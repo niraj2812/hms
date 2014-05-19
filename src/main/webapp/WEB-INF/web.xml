@@ -7,6 +7,7 @@
         <param-value>
             /WEB-INF/conf-files/spring/login-security.xml,
             /WEB-INF/conf-files/spring/patient/spring-patient.xml
+            
         </param-value>
     </context-param>
  

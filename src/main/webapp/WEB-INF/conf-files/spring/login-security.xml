@@ -7,18 +7,18 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
     <beans:import  resource="applicationContext.xml"/>
+    <!--<beans:import  resource="security-acl.xml"/>-->
        
-<!--    <beans:bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <beans:property name="configLocation" value="WEB-INF/hibernate.cfg.xml"/>
-    </beans:bean>-->
+
     <beans:bean id="userAccessDaoImpl" class="com.prag.hms.hibernate.dao.impl.UserAccessDaoImpl">
         <beans:property name="fact" ref="sessionFactory"/>
     </beans:bean>
     <beans:bean id="userDetailServiceImpl" class="com.prag.hms.hibernate.dao.impl.UserDetailServiceImpl">
         <beans:property name="userAccessDao" ref="userAccessDaoImpl"/>
     </beans:bean>
-   
+    <global-method-security pre-post-annotations="enabled">
+        <expression-handler ref="expressionHandler"/>
+    </global-method-security>
     <http auto-config='true'  use-expressions="true" access-denied-page="/access-denied-page.jsp">
         <session-management>
             <concurrency-control max-sessions="1"  error-if-maximum-exceeded="true" />
@@ -33,7 +33,7 @@
         <intercept-url pattern="/login.jsp*" access="permitAll"/>
         <intercept-url pattern="/patient/login-module/patient-registeration.jsp*" access="permitAll"/>
         
-        <!--<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>-->
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
         <form-login login-page='/login.jsp' default-target-url='/success.jsp'
                     always-use-default-target='true'/>
     </http>
@@ -51,7 +51,7 @@
     </beans:bean>
     <authentication-manager>
         <authentication-provider user-service-ref="userDetailServiceImpl">
-            <!--<password-encoder hash="sha-256" />-->
+            <password-encoder hash="sha-256" />
             
         </authentication-provider>
     </authentication-manager>

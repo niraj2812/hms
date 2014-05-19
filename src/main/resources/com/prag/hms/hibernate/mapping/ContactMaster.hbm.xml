@@ -5,7 +5,13 @@
   <class catalog="hms" name="com.prag.hms.hibernate.pojo.ContactMaster" table="contact_master">
     <id name="id" type="string">
       <column length="40" name="ID"/>
-      <generator class="uuid"/>
+      <!--<generator class="uuid"/>-->
+      <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
+          <param name="prefix">CONT</param>
+          <param name="schemaName">HMS</param>
+          <param name="tableName">contact_master</param>
+          <param name="columnName">ID</param>
+      </generator>
     </id>
     <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByCreatedBy">
       <column length="40" name="CREATED_BY"/>

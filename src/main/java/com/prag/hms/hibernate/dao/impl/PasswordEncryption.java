@@ -35,7 +35,7 @@ public class PasswordEncryption {
     public static String get_SHA_512_SecurePassword(String passwordToHash) {
         String generatedPassword = null;
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
             //md.update(salt.getBytes());
             byte[] bytes = md.digest(passwordToHash.getBytes());
             StringBuilder sb = new StringBuilder();

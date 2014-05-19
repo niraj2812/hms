@@ -1,33 +1,21 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="s" uri="/struts-tags"%>
-
-
+<!DOCTYPE html>
 <html>
     <head>
-        <s:head/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../../css/metro-bootstrap.css" rel="stylesheet">
-        <link href="../../css/metro-bootstrap-responsive.css" rel="stylesheet">
-        <link href="../../css/iconFont.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="product" content="Metro UI CSS Framework">
+        <meta name="description" content="Simple responsive css framework">
+        <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
 
+        <link href="../../css/metro-bootstrap.css" rel="stylesheet">
+
+        <!-- Load JavaScript Libraries -->
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-        <script src="../../js/metro.min.js"></script>
-        <script src="../../js/metro/metro-calendar.js"></script>
-        <script src="../../js/metro/metro-datepicker.js"></script>
-        <script src="../../js/load-metro.js"></script>
-
-
-        <!--<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
-
-        <!--<script src="../../js/jquery/jquery.js"></script>-->
-        <!--<script src="../../js/jquery/ajax.js"></script>-->
         <script>
             $(document).ready(function() {
-
-                $("#datepicker").datepicker();
                 $('#register_userAccess_loginName').blur(function() {
                     $.ajax({
                         type: "post",
@@ -36,6 +24,8 @@
                         success: function(result) {
                             if (result === true) {
                                 $('#register_userAccess_loginName').val("");
+                              
+                                
                                 alert("Username already occupied!!");
                             }
                             alert("Success" + result);
@@ -48,22 +38,36 @@
                     return false;
                 });
             });
-
-
-
-
         </script>
-        <script>
 
-        </script>
+        <title>Metro UI CSS : Metro Bootstrap CSS Library</title>
     </head>
     <body class="metro">
-        <div class="container">
+
+
+        <!--start header-->
+
+
+        <!--end header-->
+
+
+        <div class="tile-area tile-area-darkBlue ">
+
+
 
             <s:fielderror/>
 
-            
 
+            <s:url id="localeEN" namespace="/patient" action="localizeApplication" >
+                <s:param name="request_locale" >en</s:param>
+            </s:url>
+
+            <s:url id="localeHI" namespace="/patient" action="localizeApplication" >
+                <s:param name="request_locale" >hi</s:param>
+            </s:url>
+
+            <s:a href="%{localeEN}" >English</s:a>
+            <s:a href="%{localeHI}" >Hindi</s:a>
 
             <s:form action="register" namespace="/patient"  >
 
@@ -80,7 +84,7 @@
                 <s:textfield name="userMaster.motherLastName" key="user.motherLastName"/> 
                 <%--<s:textfield name="userMaster.gender" key="user.gender"/>--%> 
                 <s:radio name="userMaster.gender" key="user.gender" list="genderGroup" />
-                <s:select key="user.bloodGroup" name="userMaster.bloodGroup" headerKey="" headerValue="Select Blood Group" list="bloodGroupList" />
+                <s:select key="user.bloodGroup" name="userMaster.bloodGroup" headerKey="-1" headerValue="%{getText('bloodGroup.selectBloodGroup')}" list="bloodGroupList" />
                 <s:textfield name="userMaster.firstLanguage" key="user.firstLanguage"/> 
                 <s:textfield name="userMaster.secondLanguage" key="user.secondLanguage"/> 
                 <s:textfield name="userMaster.thirdLanguage" key="user.thirdLanguage"/> 
@@ -108,5 +112,6 @@
                 <s:submit  value="Submit"/>
             </s:form>
         </div>
+
     </body>
 </html>

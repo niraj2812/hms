@@ -20,11 +20,6 @@
           class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="configLocation" value="WEB-INF/hibernate.cfg.xml"/>
     </bean>
-    <!--    <bean id="userDaoImpl" class="p1.dao.impl.UserDaoImpl">
-        <property name="fact" ref="sessionFactory"/>
-    </bean>
-    <bean id="userDetailServiceImpl" class="p1.dao.impl.UserDetailServiceImpl">
-        <property name="userDao" ref="userDaoImpl"/>
-    </bean>-->
-        
+   
+    
 </beans>

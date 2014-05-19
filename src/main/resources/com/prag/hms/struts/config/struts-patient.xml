@@ -34,5 +34,12 @@
             <!--<result name="failure">/failure.jsp</result>-->
                   
         </action>
+        <action name="localizeApplication" class="userRegisteration" method="localizeApplication">
+            <result name="success">/patient/login-module/patient-registeration.jsp</result>
+            <result name="input">/patient/login-module/patient-registeration.jsp</result>
+            
+            <!--<result name="failure">/failure.jsp</result>-->
+                  
+        </action>
     </package>
 </struts>
