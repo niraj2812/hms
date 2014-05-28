@@ -9,7 +9,7 @@
             <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
                 <param name="prefix">USER</param>
                 <param name="schemaName">HMS</param>
-                <param name="tableName">user_master</param>
+                <param name="tableName">USER_MASTER</param>
                 <param name="columnName">USER_ID</param>
             </generator>
         </id>
@@ -79,8 +79,11 @@
         <property name="nationality" type="string">
             <column length="40" name="NATIONALITY" not-null="true"/>
         </property>
-        <property name="hospitalId" type="string">
-            <column length="40" name="HOSPITAL_ID"/>
+        <property name="patientExchangeId" type="string">
+            <column length="40" name="PATIENT_EXCHANGE_ID"/>
+        </property>
+        <property name="doctorExchangeId" type="string">
+            <column length="40" name="DOCTORS_EXCHANGE_ID"/>
         </property>
         <set inverse="true" name="userAccesses">
             <key>

@@ -47,5 +47,9 @@
         </property>
         
     </bean>
-
+    <bean id="customizedAuthenticationSuccessHandler" class="com.prag.hms.spring.util.CustomizedAuthenticationSuccessHandler">
+        <property name="userAccessDao">
+            <ref bean="userAccessDaoImpl"/>
+        </property>
+    </bean>
 </beans>

@@ -5,6 +5,7 @@
 package com.prag.hms.hibernate.dao;
 
 import com.prag.hms.hibernate.pojo.UserAccess;
+import com.prag.hms.hibernate.pojo.UserMaster;
 import java.util.List;
 
 /**
@@ -19,6 +20,8 @@ public interface UserAccessDao {
 
     // UserAccess findUser(String loginName);
     UserAccess findUserByName(String userName);
+
+    UserMaster getUserInformation(String loginName);
 
     boolean checkAvailabilityOfLoginName(String loginName);
 

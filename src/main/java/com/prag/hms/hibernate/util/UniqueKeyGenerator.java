@@ -2,48 +2,39 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.prag.hms.hibernate.dao.impl;
+package com.prag.hms.hibernate.util;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
+import com.prag.hms.hibernate.dao.impl.HibernateIdGenerator;
 import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.hibernate.HibernateException;
-import org.hibernate.MappingException;
-import org.hibernate.dialect.Dialect;
-
-import org.hibernate.engine.SessionImplementor;
-import org.hibernate.id.Configurable;
-
-import org.hibernate.id.IdentifierGenerator;
-import org.hibernate.type.Type;
+import org.hibernate.Session;
 
 /**
  *
- * This class will generate a random value which can be use as Hibernate mapping
- *
- * generator value. To use this class ,In the *.hbm.xml file's generator class
- *
- * need to change into this class fully qualified name.
- *
- *
- *
- * @author Niraj Singh.
- *
- *
- *
+ * @author Admin
  */
-public class HibernateIdGenerator implements IdentifierGenerator, Configurable {
+public class UniqueKeyGenerator {
 
     private String prefix;
     private String schemaName;
     private String tableName;
     private String columnName;
+
+    public UniqueKeyGenerator() {
+    }
+
+    public UniqueKeyGenerator(String prefix, String schemaName, String tableName, String columnName) {
+        this.prefix = prefix;
+        this.schemaName = schemaName;
+        this.tableName = tableName;
+        this.columnName = columnName;
+    }
 
     public String getSchemaName() {
         return schemaName;
@@ -77,24 +68,33 @@ public class HibernateIdGenerator implements IdentifierGenerator, Configurable {
         this.prefix = prefix;
     }
 
-    public Serializable generate(SessionImplementor si, Object o) throws HibernateException {
-        if (si != null) {
-            System.out.println("si connected!!");
-            System.out.println("prefix=" + prefix);
-            System.out.println("schema=" + schemaName);
-            System.out.println("table=" + tableName);
-            System.out.println("column=" + columnName);
+    public String generate(Session session) {
+        String key = null;
+        try {
+            if (session != null) {
+                key = new StringBuffer(prefix).append("-").append(getNextNumber(session)).toString();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (session != null && session.isOpen()) {
+                    session.close();
+                }
+            } catch (HibernateException e) {
+                System.out.println(e);
+            }
 
-        } else {
-            System.out.println("si not connected");
         }
-        return new StringBuffer(prefix).append("-").append(getNextNumber(si)).toString();
+        return key;
         //return "contact";
     }
 
-    private Long getNextNumber(SessionImplementor session) {
+    private Long getNextNumber(Session session) {
+
+
         Long index = 0L;
-        Connection con = (Connection) session.getBatcher().openConnection();
+        Connection con = (Connection) session.connection();
 
         CallableStatement statement = null;
         try {
@@ -110,7 +110,7 @@ public class HibernateIdGenerator implements IdentifierGenerator, Configurable {
                     System.out.println("Output=" + statement.getLong(1));
                     index = statement.getLong(1);
                     con.commit();
-                    
+
                     System.out.println("Connected identifier");
                 }
             }
@@ -136,17 +136,6 @@ public class HibernateIdGenerator implements IdentifierGenerator, Configurable {
         }
 
         return index;
-
-    }
-
-    public void configure(Type type, Properties params, Dialect dlct) throws MappingException {
-
-        this.setPrefix(params.getProperty("prefix"));
-        this.setSchemaName(params.getProperty("schemaName"));
-        this.setTableName(params.getProperty("tableName"));
-        this.setColumnName(params.getProperty("columnName"));
-//        params.getProperty(PersistentIdentifierGenerator.)
-
 
     }
 }

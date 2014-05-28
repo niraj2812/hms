@@ -14,5 +14,10 @@ import com.prag.hms.hibernate.pojo.UserMaster;
  * @author Admin
  */
 public interface RegisterUserDao {
-    boolean registerUser(AddressMaster address,ContactMaster contact,UserMaster userMaster,UserAccess userAccess);
+
+    boolean registerUser(AddressMaster address, ContactMaster contact, UserMaster userMaster, UserAccess userAccess);
+
+    String generateUniquePatientExchangeId();
+
+    String generateUniqueDoctorExchangeId();
 }

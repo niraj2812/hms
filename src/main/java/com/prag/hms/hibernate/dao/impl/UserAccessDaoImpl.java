@@ -6,6 +6,7 @@ package com.prag.hms.hibernate.dao.impl;
 
 import com.prag.hms.hibernate.dao.UserAccessDao;
 import com.prag.hms.hibernate.pojo.UserAccess;
+import com.prag.hms.hibernate.pojo.UserMaster;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,9 +39,7 @@ public class UserAccessDaoImpl implements UserAccessDao {
 //        return (UserAccess) fact.getCurrentSession().get(UserAccess.class, userId);
 //    }
     public UserAccess findUserByName(String userName) {
-       
-        UserAccess ua = (UserAccess) fact.openSession().get(UserAccess.class, userName);
-        return ua;
+        return (UserAccess) fact.openSession().get(UserAccess.class, userName);
     }
 
     public boolean checkAvailabilityOfLoginName(String loginName) {
@@ -50,6 +49,10 @@ public class UserAccessDaoImpl implements UserAccessDao {
             result = true;
         }
         return result;
+    }
+
+    public UserMaster getUserInformation(String loginName) {
+        return findUserByName(loginName).getUserMaster();
     }
 
     public List<UserAccess> getAllUsers() {

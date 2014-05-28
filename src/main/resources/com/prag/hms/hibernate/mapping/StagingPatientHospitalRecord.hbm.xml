@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 May, 2014 2:56:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.StagingPatientHospitalRecord" table="staging_patient_hospital_record">
+    <id name="stagingHospitalId" type="string">
+      <column length="40" name="Staging_Hospital_Id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="patientExchangeId" type="string">
+      <column length="40" name="Patient_Exchange_Id"/>
+    </property>
+    <property name="hospitalName" type="string">
+      <column length="200" name="`Hospital name`"/>
+    </property>
+    <property name="hospitalPatientId" type="string">
+      <column length="200" name="Hospital_Patient_ID"/>
+    </property>
+    <property name="hospitalRegistrationDate" type="date">
+      <column length="10" name="Hospital_Registration_Date"/>
+    </property>
+    <property name="hospitalEmail" type="string">
+      <column length="200" name="`Hospital Email`"/>
+    </property>
+    <property name="officePhone" type="string">
+      <column length="40" name="Office_phone"/>
+    </property>
+    <property name="mobileNo" type="string">
+      <column length="40" name="`Mobile no`"/>
+    </property>
+    <property name="emergencyContactNo" type="string">
+      <column length="40" name="`Emergency contact no`"/>
+    </property>
+    <property name="officeAddress1" type="string">
+      <column length="40" name="Office_Address1"/>
+    </property>
+    <property name="officeAddress2" type="string">
+      <column length="40" name="Office_Address2"/>
+    </property>
+    <property name="officeCity" type="string">
+      <column length="40" name="Office_City"/>
+    </property>
+    <property name="officeState" type="string">
+      <column length="40" name="Office_State"/>
+    </property>
+    <property name="officePinCode" type="string">
+      <column length="40" name="Office_Pin_Code"/>
+    </property>
+    <property name="officeCountry" type="string">
+      <column length="40" name="Office_Country"/>
+    </property>
+    <property name="createdBy" type="string">
+      <column length="40" name="Created_by"/>
+    </property>
+    <property name="createdDate" type="timestamp">
+      <column length="19" name="Created_date" not-null="true"/>
+    </property>
+    <property name="modifiedBy" type="string">
+      <column length="40" name="Modified_by"/>
+    </property>
+    <property name="modifiedDate" type="timestamp">
+      <column length="19" name="Modified_date" not-null="true"/>
+    </property>
+    <property name="dataSource" type="string">
+      <column length="40" name="Data_source"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -29,16 +29,21 @@
         <intercept-url pattern="/images/**" access="permitAll"/>
         <intercept-url pattern="/js/**" access="permitAll"/>
         
+        <intercept-url pattern="/patient/**" access="hasRole('ROLE_USER')"/>
+        
         <intercept-url pattern="/hms-home.html*" access="permitAll"/>
         <intercept-url pattern="/login.jsp*" access="permitAll"/>
         <intercept-url pattern="/patient/login-module/patient-registeration.jsp*" access="permitAll"/>
         
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-        <form-login login-page='/login.jsp' default-target-url='/success.jsp'
-                    always-use-default-target='true'/>
+        <!--        <form-login login-page='/login.jsp' default-target-url='/success.jsp'
+        always-use-default-target='true'/>-->
+         <form-login login-page='/login.jsp'
+            authentication-failure-url="/login.jsp?error=true"
+            authentication-success-handler-ref="customizedAuthenticationSuccessHandler"/>
     </http>
     
-    
+    <beans:bean id="customizedAuthenticationSuccessHandler"
+        class="com.prag.hms.spring.util.CustomizedAuthenticationSuccessHandler" />
     <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
         <beans:property name="userDetailsService" ref="userDetailServiceImpl"/>
     </beans:bean>

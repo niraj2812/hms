@@ -20,7 +20,7 @@
             <result name="input">/patient/login-module/patient-registeration.jsp</result>
        
         </action>
-        <action name="register" class="userRegisteration" method="registerUser">
+        <action name="register" class="userRegisteration" method="registerUserAsPatient">
             <result>/success.jsp</result>
             <result name="input">/patient/login-module/patient-registeration.jsp</result>
             <result name="failure">/failure.jsp</result>

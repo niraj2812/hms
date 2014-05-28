@@ -42,7 +42,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             boolean accountNonLocker = user.getEntityStatus().equals("ACTIVE");
             Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             for (Roles role : user.getRoleses()) {
-                authorities.add(new SimpleGrantedAuthority(role.getName()));
+                authorities.add(new SimpleGrantedAuthority(role.getRoleId()));
             }
 
             org.springframework.security.core.userdetails.User securityUser = new org.springframework.security.core.userdetails.User(username, password, enabled, accountNotExpired, credentialsNotExpired, accountNonLocker, authorities);

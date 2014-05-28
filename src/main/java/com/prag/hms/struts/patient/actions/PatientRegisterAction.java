@@ -33,7 +33,7 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
  * @author Admin
  */
 public class PatientRegisterAction extends ActionSupport {
-    
+
     private UserAccessDao userAccessDao;
     private UserAccess userAccess;
     private UserMaster userMaster;
@@ -45,7 +45,7 @@ public class PatientRegisterAction extends ActionSupport {
     private Map<String, String> bloodGroupList;
     private static final String DEFAULT_LOCALE = "en";
     private static final String REQUEST_LOCALE = "request_locale";
-    
+
     public PatientRegisterAction() {
         String selectedLocale = ServletActionContext.getRequest().getParameter(REQUEST_LOCALE);
         if (selectedLocale == null) {
@@ -63,7 +63,7 @@ public class PatientRegisterAction extends ActionSupport {
         Locale locale = new Locale(selectedLocale);
         ActionContext.getContext().setLocale(locale);
         ActionContext.getContext().getSession().put(I18nInterceptor.DEFAULT_SESSION_ATTRIBUTE, locale);
-        
+
     }
 
     /**
@@ -104,67 +104,67 @@ public class PatientRegisterAction extends ActionSupport {
     public void setGenderGroup(Map<String, String> genderGroup) {
         this.genderGroup = genderGroup;
     }
-    
+
     public Map<String, String> getBloodGroupList() {
         return bloodGroupList;
     }
-    
+
     public void setBloodGroupList(Map<String, String> bloodGroupList) {
         this.bloodGroupList = bloodGroupList;
     }
-    
+
     public RegisterUserDao getRegisterUserDao() {
         return registerUserDao;
     }
-    
+
     public void setRegisterUserDao(RegisterUserDao registerUserDao) {
         this.registerUserDao = registerUserDao;
     }
-    
+
     public UserAccessDao getUserAccessDao() {
         return userAccessDao;
     }
-    
+
     public void setUserAccessDao(UserAccessDao userAccessDao) {
         this.userAccessDao = userAccessDao;
     }
-    
+
     public String getConfirmPassword() {
         return confirmPassword;
     }
-    
+
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-    
+
     public UserAccess getUserAccess() {
         return userAccess;
     }
-    
+
     public void setUserAccess(UserAccess userAccess) {
         this.userAccess = userAccess;
     }
-    
+
     public UserMaster getUserMaster() {
         return userMaster;
     }
-    
+
     public void setUserMaster(UserMaster userMaster) {
         this.userMaster = userMaster;
     }
-    
+
     public ContactMaster getContactMaster() {
         return contactMaster;
     }
-    
+
     public void setContactMaster(ContactMaster contactMaster) {
         this.contactMaster = contactMaster;
     }
-    
+
     public AddressMaster getAddressMaster() {
         return addressMaster;
     }
-    
+
     public void setAddressMaster(AddressMaster addressMaster) {
         this.addressMaster = addressMaster;
     }
@@ -175,7 +175,7 @@ public class PatientRegisterAction extends ActionSupport {
     @SkipValidation
     @Override
     public String execute() {
-        
+
         return "success";
     }
 
@@ -187,7 +187,7 @@ public class PatientRegisterAction extends ActionSupport {
         Locale locale = new Locale(ServletActionContext.getRequest().getParameter("request_locale"));
         ActionContext.getContext().setLocale(locale);
         ActionContext.getContext().getSession().put(I18nInterceptor.DEFAULT_SESSION_ATTRIBUTE, locale);
-        
+
         return "success";
     }
 
@@ -223,27 +223,28 @@ public class PatientRegisterAction extends ActionSupport {
     /**
      *
      */
-    public String registerUser() {
+    public String registerUserAsPatient() {
         String result = "failure";
-        
+
         addressMaster.setEntityType(EntityType.USER);
         addressMaster.setEntityStatus(Status.ACTIVE);
         addressMaster.setDataSource(DataSource.UI);
         addressMaster.setCreationDate(new java.util.Date());
-        
+
         contactMaster.setEntityType(EntityType.USER);
         contactMaster.setEntityStatus(Status.ACTIVE);
         contactMaster.setDataSource(DataSource.UI);
         contactMaster.setCreationDate(new java.util.Date());
-        
+        //User Master
         userMaster.setEntityStatus(Status.ACTIVE);
         userMaster.setDataSource(DataSource.UI);
         userMaster.setCreationDate(new java.util.Date());
+        userMaster.setPatientExchangeId(registerUserDao.generateUniquePatientExchangeId());
         //required from UI
         userMaster.setDob(new java.util.Date());
         userMaster.setAddressMaster(addressMaster);
         userMaster.setContactMaster(contactMaster);
-        
+
         userAccess.setDataSource(DataSource.UI);
         userAccess.setEntityStatus(Status.ACTIVE);
         userAccess.setUserMaster(userMaster);
