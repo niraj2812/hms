@@ -1,0 +1,51 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: Niraj-->
+ 
+<struts>
+    <package name="patient" extends="json-default" namespace="/patient/record">
+       
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types> 
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+        </interceptors>
+        
+        <action name="navigatePatientHospitalRecord" class="patientHospitalRecordAction" method="naviagateHospitalMaster" >
+            <result name="success">/patient/patient-hospital-master.jsp</result>
+        </action>
+        <action name="fetchCountryStateCity" class="countryStateCityAction" method="fetchCountryStateCity">
+            <result name="success" type="json"/>
+           
+        </action>
+        <action name="getHospitalRecords" class="hospitalMasterRecordAction" method="populateHospitalRecords">
+           
+           
+        </action>
+        <action name="refreshHospitalRecords" class="hospitalMasterRecordAction">
+            <result type="json"/>
+        </action>
+        
+        <action name="navigatePatientDoctorRecord" class="patientDoctorRecordAction" method="navigatePatientDoctorRecord">
+            <result name="success">/patient/patient-doctors-master.jsp</result>
+        </action>
+        <action name="addHospitalRecord" class="patientHospitalRecordAction" method="addStagingHospialRecord">
+            <result name="success">/success.jsp</result>
+            <result name="failure">/failure.jsp</result>
+       
+        </action>
+        <action name="addDoctorsRecord" class="patientDoctorRecordAction" method="addStagingDoctorRecord">
+            <result name="success">/success.jsp</result>
+            <result name="failure">/failure.jsp</result>
+       
+        </action>
+        
+        <action name="addHospitalNumberMaster" class="patientHospitalRecordAction" method="addHospitalNumberMaster">
+            <result ></result>
+        </action>
+        
+    </package>
+</struts>

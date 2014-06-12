@@ -38,7 +38,6 @@ public class UserAccess  implements java.io.Serializable {
      private Set securityQuestionMastersForModifiedBy = new HashSet(0);
      private Set userAccessesForModifiedBy = new HashSet(0);
      private Set contactMastersForCreatedBy = new HashSet(0);
-     private Set roleses_1 = new HashSet(0);
      private Set userMastersForCreatedBy = new HashSet(0);
      private Set aclSids = new HashSet(0);
      private Set securityQuestionMastersForCreatedBy = new HashSet(0);
@@ -82,7 +81,6 @@ public class UserAccess  implements java.io.Serializable {
        this.securityQuestionMastersForModifiedBy = securityQuestionMastersForModifiedBy;
        this.userAccessesForModifiedBy = userAccessesForModifiedBy;
        this.contactMastersForCreatedBy = contactMastersForCreatedBy;
-       this.roleses_1 = roleses_1;
        this.userMastersForCreatedBy = userMastersForCreatedBy;
        this.aclSids = aclSids;
        this.securityQuestionMastersForCreatedBy = securityQuestionMastersForCreatedBy;
@@ -270,13 +268,7 @@ public class UserAccess  implements java.io.Serializable {
     public void setContactMastersForCreatedBy(Set contactMastersForCreatedBy) {
         this.contactMastersForCreatedBy = contactMastersForCreatedBy;
     }
-    public Set getRoleses_1() {
-        return this.roleses_1;
-    }
-    
-    public void setRoleses_1(Set roleses_1) {
-        this.roleses_1 = roleses_1;
-    }
+  
     public Set getUserMastersForCreatedBy() {
         return this.userMastersForCreatedBy;
     }

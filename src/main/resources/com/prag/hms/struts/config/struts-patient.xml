@@ -5,7 +5,7 @@
 <!-- Author: Niraj-->
  
 <struts>
-    <constant name="struts.devMode" value="true"/>
+    
     <package name="patient" extends="struts-default" namespace="/patient">
         <result-types>
             <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
@@ -42,4 +42,5 @@
                   
         </action>
     </package>
+    <include file="com/prag/hms/struts/config/struts-patient-record-maintenance.xml"/>
 </struts>

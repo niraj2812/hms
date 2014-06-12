@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 Jun, 2014 10:40:04 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.StateMaster" table="state_master">
+    <id name="stateName" type="string">
+      <column length="200" name="STATE_NAME"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.prag.hms.hibernate.pojo.CountryMaster" fetch="select" name="countryMaster">
+      <column length="200" name="COUNTRY_NAME"/>
+    </many-to-one>
+    
+  </class>
+</hibernate-mapping>

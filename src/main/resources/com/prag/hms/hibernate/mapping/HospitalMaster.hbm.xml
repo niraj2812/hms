@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 Jun, 2014 10:44:01 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.HospitalMaster" table="hospital_master" >
+    <id name="hospitalId" type="string">
+      <column length="40" name="Hospital_id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.prag.hms.hibernate.pojo.ContactMaster" fetch="select" name="contactMaster" >
+      <column length="40" name="Contact_id"/>
+    </many-to-one>
+    <many-to-one class="com.prag.hms.hibernate.pojo.AddressMaster" fetch="select" name="addressMaster">
+      <column length="40" name="Address_id"/>
+    </many-to-one>
+    <property name="hospitalName" type="string">
+      <column length="40" name="Hospital_name"/>
+    </property>
+    <property name="createdBy" type="string">
+      <column length="40" name="Created_By"/>
+    </property>
+    <property name="creationDate" type="timestamp">
+      <column length="19" name="Creation_Date"/>
+    </property>
+    <property name="modifiedBy" type="string">
+      <column length="40" name="Modified_BY"/>
+    </property>
+    <property name="modifiedDate" type="timestamp">
+      <column length="19" name="Modified_Date"/>
+    </property>
+    <property name="dataSource" type="string">
+      <column length="40" name="Data_Source"/>
+    </property>
+    <property name="entityStatus" type="string">
+      <column length="40" name="Entity_Status"/>
+    </property>
+  
+  </class>
+</hibernate-mapping>

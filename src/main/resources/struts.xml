@@ -5,8 +5,7 @@
 
 <struts>
     <constant name="struts.custom.i18n.resources" value="global" />
-    <constant name="struts.devMode" value="true" />
-   
+    <!--<constant name="struts.ui.theme" value="css_xhtml"/>-->
     <include file="com/prag/hms/struts/config/struts-patient.xml"/>
 </struts>
 

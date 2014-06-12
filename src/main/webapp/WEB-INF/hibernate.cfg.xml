@@ -25,5 +25,13 @@
         <mapping resource="com/prag/hms/hibernate/mapping/AddressMaster.hbm.xml"/>
         <mapping resource="com/prag/hms/hibernate/mapping/AclClass.hbm.xml"/>
         <mapping resource="com/prag/hms/hibernate/mapping/ActionTypes.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/StagingPatientHospitalRecord.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/StagingPatientDoctorRecord.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/HospitalMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/StateMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/CityMaster.hbm.xml"/>
+        <mapping resource="com/prag/hms/hibernate/mapping/CountryMaster.hbm.xml"/>
+        
+        <mapping resource="com/prag/hms/hibernate/mapping/HospitalNumbersMaster.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

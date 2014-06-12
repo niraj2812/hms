@@ -4,6 +4,7 @@
  */
 package com.prag.hms.spring.util;
 
+import com.prag.hms.constants.HttpSessionNames;
 import com.prag.hms.hibernate.dao.UserAccessDao;
 import java.io.IOException;
 import java.util.Collection;
@@ -25,19 +26,19 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  * @author Admin
  */
 public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-    
+
     protected Log logger = LogFactory.getLog(this.getClass());
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     private UserAccessDao userAccessDao;
-    
+
     public UserAccessDao getUserAccessDao() {
         return userAccessDao;
     }
-    
+
     public void setUserAccessDao(UserAccessDao userAccessDao) {
         this.userAccessDao = userAccessDao;
     }
-    
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
             HttpServletResponse response, Authentication authentication) throws IOException {
@@ -45,21 +46,21 @@ public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuc
         addUserInformationInSession(request, authentication);
         clearAuthenticationAttributes(request);
     }
-    
+
     public void addUserInformationInSession(HttpServletRequest request, Authentication authentication) {
-        request.getSession(true).setAttribute("patientInformation", userAccessDao.getUserInformation(((User) authentication.getPrincipal()).getUsername()));
-        
+        request.getSession(true).setAttribute(HttpSessionNames.PATIENT_INFORMATION, userAccessDao.getUserInformation(((User) authentication.getPrincipal()).getUsername()));
+
     }
-    
+
     public void handle(HttpServletRequest request,
             HttpServletResponse response, Authentication authentication) throws IOException {
         String targetUrl = determineTargetUrl(request, authentication);
-        
+
         if (response.isCommitted()) {
             logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
             return;
         }
-        
+
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
@@ -77,12 +78,12 @@ public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuc
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;
-                
+
                 break;
             }
-            
+
         }
-        
+
         if (isUser) {
             return "/patient/patient-home-page.jsp";
         } else if (isAdmin) {
@@ -91,7 +92,7 @@ public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuc
             throw new IllegalStateException();
         }
     }
-    
+
     public void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {
@@ -99,11 +100,11 @@ public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuc
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
     }
-    
+
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
     }
-    
+
     public RedirectStrategy getRedirectStrategy() {
         return redirectStrategy;
     }

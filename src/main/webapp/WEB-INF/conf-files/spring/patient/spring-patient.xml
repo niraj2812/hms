@@ -18,6 +18,8 @@
 ">
     <import resource="../applicationContext.xml"/>
     <import resource="spring-patient-login-module.xml"/>
+    <import resource="spring-patient-record-maintenance.xml"/>
+    
     
     <!--    <bean id="userDaoImpl" class="p1.dao.impl.UserDaoImpl">
         <property name="fact" ref="sessionFactory"/>

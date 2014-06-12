@@ -4,7 +4,7 @@
     Author     : Admin
 --%>
 
-<%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -15,8 +15,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <s:url id="hospitalRecords" namespace="/patient" action="localizeApplication"/> 
-    <s:url id="doctorRecords" namespace="/patient" action="localizeApplication"/> 
+    <s:url id="hospitalRecords" namespace="/patient/record" action="navigatePatientHospitalRecord"/> 
+    <s:url id="doctorRecords" namespace="/patient/record" action="navigatePatientDoctorRecord"/> 
     <s:url id="uploadDetailReports" namespace="/patient" action="localizeApplication"/> 
     <s:url id="manageReports" namespace="/patient" action="localizeApplication"/> 
     <s:url id="quickUpload" namespace="/patient" action="localizeApplication"/> 

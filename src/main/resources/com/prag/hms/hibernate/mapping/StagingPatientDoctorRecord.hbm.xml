@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 May, 2014 6:57:45 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.prag.hms.hibernate.pojo.StagingPatientDoctorRecord" table="staging_patient_doctor_record" catalog="hms">
+        <id name="stagingDoctorId" type="string">
+            <column name="Staging_Doctor_Id" length="40" />
+            <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
+                <param name="prefix">DOCT</param>
+                <param name="schemaName">HMS</param>
+                <param name="tableName">DOCTOR_MASTER</param>
+                <param name="columnName">DOCTOR_EXCHANGE_ID</param>
+            </generator>
+        </id>
+        <many-to-one name="stagingPatientHospitalRecord" class="com.prag.hms.hibernate.pojo.StagingPatientHospitalRecord" fetch="select">
+            <column name="Staging_Hospital_id" length="40" />
+        </many-to-one>
+        <property name="patientExchangeId" type="string">
+            <column name="Patient_Exchange_Id" length="40" />
+        </property>
+        <property name="doctorsFirstName" type="string">
+            <column name="Doctors_First_Name" length="40" />
+        </property>
+        <property name="doctorsLastName" type="string">
+            <column name="Doctors_Last_Name" length="40" />
+        </property>
+        <property name="specialization" type="string">
+            <column name="Specialization" length="40" />
+        </property>
+        <property name="doctorsEmail" type="string">
+            <column name="Doctors_Email" length="40" />
+        </property>
+        <property name="officePhone" type="string">
+            <column name="Office_phone" length="40" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="Created_By" length="40" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="Created_Date" length="19" not-null="true" />
+        </property>
+        <property name="modifiedBy" type="string">
+            <column name="Modified_By" length="40" />
+        </property>
+        <property name="modifiedDate" type="timestamp">
+            <column name="Modified_Date" length="19"  />
+        </property>
+        <property name="dataSource" type="string">
+            <column name="Data_Source" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

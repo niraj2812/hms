@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 Jun, 2014 10:44:01 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="hms" name="com.prag.hms.hibernate.pojo.HospitalNumbersMaster" table="hospital_numbers_master">
+    <composite-id class="com.prag.hms.hibernate.pojo.HospitalNumbersMasterId" name="id">
+      <key-property name="patientExchangeId" type="string">
+        <column length="40" name="Patient_Exchange_Id"/>
+      </key-property>
+      <key-property name="hospitalId" type="string">
+        <column length="40" name="Hospital_ID"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.prag.hms.hibernate.pojo.HospitalMaster" fetch="select" insert="false" name="hospitalMaster" update="false">
+      <column length="40" name="Hospital_ID" not-null="true"/>
+    </many-to-one>
+    <property name="hospitalPatientId" type="string">
+      <column length="40" name="Hospital_Patient_ID" not-null="true"/>
+    </property>
+    <property name="hospitalRegistrationDate" type="timestamp">
+      <column length="19" name="Hosptal_Registration_Date" not-null="true"/>
+    </property>
+    <property name="dataSource" type="string">
+      <column length="40" name="Data_source" not-null="true"/>
+    </property>
+    <property name="createdBy" type="string">
+      <column length="40" name="Created_By" not-null="true"/>
+    </property>
+    <property name="creationDate" type="timestamp">
+      <column length="19" name="Creation_Date" not-null="true"/>
+    </property>
+    <property name="modifiedBy" type="string">
+      <column length="40" name="Modified_BY"/>
+    </property>
+    <property name="modifiedDate" type="timestamp">
+      <column length="19" name="Modified_Date"/>
+    </property>
+    <property name="entityStatus" type="string">
+      <column length="40" name="Entity_Status" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

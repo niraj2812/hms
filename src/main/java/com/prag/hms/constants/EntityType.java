@@ -10,9 +10,9 @@ package com.prag.hms.constants;
  */
 public interface EntityType {
 
-    String USER="USER";
-    String ADMIN="ADMIN";
-    
+    String USER = "USER";
+    String ADMIN = "ADMIN";
+    String ADDRESS_ENTITY_TYPE_HOSPITAL = "HOSPITAL";
+    String ADDRESS_ENTITY_TYPE_USER = "USER";
 //    ADMIN {@Override public String toString() {return "ADMIN";}};
-
 }

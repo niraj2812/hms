@@ -120,12 +120,6 @@
       </key>
       <one-to-many class="com.prag.hms.hibernate.pojo.ContactMaster"/>
     </set>
-    <set inverse="true" name="roleses_1">
-      <key>
-        <column length="40" name="CREATED_BY"/>
-      </key>
-      <one-to-many class="com.prag.hms.hibernate.pojo.Roles"/>
-    </set>
     <set inverse="true" name="userMastersForCreatedBy">
       <key>
         <column length="40" name="CREATED_BY"/>

@@ -2,78 +2,68 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 1 May, 2014 5:57:34 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="hms" name="com.prag.hms.hibernate.pojo.AddressMaster" table="address_master">
-    <id name="id" type="string">
-      <column length="40" name="ID"/>
-      <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
-          <param name="prefix">ADDRS</param>
-          <param name="schemaName">HMS</param>
-          <param name="tableName">address_master</param>
-          <param name="columnName">ID</param>
-      </generator>
-    </id>
-    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByCreatedBy">
-      <column length="40" name="Created_By"/>
-    </many-to-one>
-    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByModifiedBy">
-      <column length="40" name="Modified_BY"/>
-    </many-to-one>
-    <property name="homeAddress1" type="string">
-      <column length="40" name="Home_Address1" not-null="true"/>
-    </property>
-    <property name="homeAddress2" type="string">
-      <column length="40" name="Home_Address2"/>
-    </property>
-    <property name="homeCity" type="string">
-      <column length="40" name="Home_City" not-null="true"/>
-    </property>
-    <property name="homeState" type="string">
-      <column length="40" name="Home_State" not-null="true"/>
-    </property>
-    <property name="homePinCode" type="string">
-      <column length="40" name="Home_Pin_Code" not-null="true"/>
-    </property>
-    <property name="homeCountry" type="string">
-      <column length="40" name="Home_Country" not-null="true"/>
-    </property>
-    <property name="officeAddress1" type="string">
-      <column length="40" name="Office_Address1"/>
-    </property>
-    <property name="officeAddress2" type="string">
-      <column length="40" name="Office_Address2"/>
-    </property>
-    <property name="officeCity" type="string">
-      <column length="40" name="Office_City"/>
-    </property>
-    <property name="officeState" type="string">
-      <column length="40" name="Office_State"/>
-    </property>
-    <property name="officePinCode" type="string">
-      <column length="40" name="Office_Pin_Code"/>
-    </property>
-    <property name="officeCountry" type="string">
-      <column length="40" name="Office_Country"/>
-    </property>
-    <property name="creationDate" type="timestamp">
-      <column length="10" name="Creation_Date"/>
-    </property>
-    <property name="modifiedDate" type="timestamp">
-      <column length="10" name="Modified_Date"/>
-    </property>
-    <property name="dataSource" type="string">
-      <column length="40" name="Data_Source" not-null="true"/>
-    </property>
-    <property name="entityStatus" type="string">
-      <column length="40" name="Entity_Status" not-null="true"/>
-    </property>
-    <property name="entityType" type="string">
-      <column length="40" name="Entity_Type" not-null="true"/>
-    </property>
-    <set inverse="true" name="userMasters">
-      <key>
-        <column length="40" name="ADDRESS_ID" not-null="true" unique="true"/>
-      </key>
-      <one-to-many class="com.prag.hms.hibernate.pojo.UserMaster"/>
-    </set>
-  </class>
+    <class catalog="hms" name="com.prag.hms.hibernate.pojo.AddressMaster" table="address_master">
+        <id name="id" type="string">
+            <column length="40" name="ID"/>
+            <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
+                <param name="prefix">ADDRS</param>
+                <param name="schemaName">HMS</param>
+                <param name="tableName">address_master</param>
+                <param name="columnName">ID</param>
+            </generator>
+        </id>
+      
+        <property name="homeAddress1" type="string">
+            <column length="40" name="Home_Address1" not-null="true"/>
+        </property>
+        <property name="homeAddress2" type="string">
+            <column length="40" name="Home_Address2"/>
+        </property>
+        <property name="homeCity" type="string">
+            <column length="40" name="Home_City" not-null="true"/>
+        </property>
+        <property name="homeState" type="string">
+            <column length="40" name="Home_State" not-null="true"/>
+        </property>
+        <property name="homePinCode" type="string">
+            <column length="40" name="Home_Pin_Code" not-null="true"/>
+        </property>
+        <property name="homeCountry" type="string">
+            <column length="40" name="Home_Country" not-null="true"/>
+        </property>
+        <property name="officeAddress1" type="string">
+            <column length="40" name="Office_Address1"/>
+        </property>
+        <property name="officeAddress2" type="string">
+            <column length="40" name="Office_Address2"/>
+        </property>
+        <property name="officeCity" type="string">
+            <column length="40" name="Office_City"/>
+        </property>
+        <property name="officeState" type="string">
+            <column length="40" name="Office_State"/>
+        </property>
+        <property name="officePinCode" type="string">
+            <column length="40" name="Office_Pin_Code"/>
+        </property>
+        <property name="officeCountry" type="string">
+            <column length="40" name="Office_Country"/>
+        </property>
+        <property name="creationDate" type="timestamp">
+            <column length="10" name="Creation_Date"/>
+        </property>
+        <property name="modifiedDate" type="timestamp">
+            <column length="10" name="Modified_Date"/>
+        </property>
+        <property name="dataSource" type="string">
+            <column length="40" name="Data_Source" not-null="true"/>
+        </property>
+        <property name="entityStatus" type="string">
+            <column length="40" name="Entity_Status" not-null="true"/>
+        </property>
+        <property name="entityType" type="string">
+            <column length="40" name="Entity_Type" not-null="true"/>
+        </property>
+      
+    </class>
 </hibernate-mapping>

@@ -2,61 +2,51 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 1 May, 2014 5:57:34 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="hms" name="com.prag.hms.hibernate.pojo.ContactMaster" table="contact_master">
-    <id name="id" type="string">
-      <column length="40" name="ID"/>
-      <!--<generator class="uuid"/>-->
-      <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
-          <param name="prefix">CONT</param>
-          <param name="schemaName">HMS</param>
-          <param name="tableName">contact_master</param>
-          <param name="columnName">ID</param>
-      </generator>
-    </id>
-    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByCreatedBy">
-      <column length="40" name="CREATED_BY"/>
-    </many-to-one>
-    <many-to-one class="com.prag.hms.hibernate.pojo.UserAccess" fetch="select" name="userAccessByModifiedBy">
-      <column length="40" name="MODIFIED_BY"/>
-    </many-to-one>
-    <property name="email" type="string">
-      <column length="40" name="EMAIL"/>
-    </property>
-    <property name="homePhone" type="string">
-      <column length="40" name="HOME_PHONE"/>
-    </property>
-    <property name="officePhone" type="string">
-      <column length="40" name="OFFICE_PHONE"/>
-    </property>
-    <property name="mobileNo" type="string">
-      <column length="40" name="MOBILE_NO"/>
-    </property>
-    <property name="emergencyContactNo" type="string">
-      <column length="40" name="EMERGENCY_CONTACT_NO" not-null="true"/>
-    </property>
-    <property name="relationWithContactPerson" type="string">
-      <column length="40" name="RELATION_WITH_CONTACT_PERSON" not-null="true"/>
-    </property>
-    <property name="creationDate" type="timestamp">
-      <column length="10" name="CREATION_DATE"/>
-    </property>
-    <property name="modifiedDate" type="timestamp">
-      <column length="10" name="MODIFIED_DATE"/>
-    </property>
-    <property name="dataSource" type="string">
-      <column length="40" name="DATA_SOURCE" not-null="true"/>
-    </property>
-    <property name="entityStatus" type="string">
-      <column length="40" name="ENTITY_STATUS" not-null="true"/>
-    </property>
-    <property name="entityType" type="string">
-      <column length="40" name="ENTITY_TYPE" not-null="true"/>
-    </property>
-    <set inverse="true" name="userMasters">
-      <key>
-        <column length="40" name="CONTACT_ID" not-null="true" unique="true"/>
-      </key>
-      <one-to-many class="com.prag.hms.hibernate.pojo.UserMaster"/>
-    </set>
-  </class>
+    <class catalog="hms" name="com.prag.hms.hibernate.pojo.ContactMaster" table="contact_master">
+        <id name="id" type="string">
+            <column length="40" name="ID"/>
+            <!--<generator class="uuid"/>-->
+            <generator class="com.prag.hms.hibernate.dao.impl.HibernateIdGenerator">
+                <param name="prefix">CONT</param>
+                <param name="schemaName">HMS</param>
+                <param name="tableName">contact_master</param>
+                <param name="columnName">ID</param>
+            </generator>
+        </id>
+      
+        <property name="email" type="string">
+            <column length="40" name="EMAIL"/>
+        </property>
+        <property name="homePhone" type="string">
+            <column length="40" name="HOME_PHONE"/>
+        </property>
+        <property name="officePhone" type="string">
+            <column length="40" name="OFFICE_PHONE"/>
+        </property>
+        <property name="mobileNo" type="string">
+            <column length="40" name="MOBILE_NO"/>
+        </property>
+        <property name="emergencyContactNo" type="string">
+            <column length="40" name="EMERGENCY_CONTACT_NO" not-null="true"/>
+        </property>
+        <property name="relationWithContactPerson" type="string">
+            <column length="40" name="RELATION_WITH_CONTACT_PERSON" not-null="true"/>
+        </property>
+        <property name="creationDate" type="timestamp">
+            <column length="10" name="CREATION_DATE"/>
+        </property>
+        <property name="modifiedDate" type="timestamp">
+            <column length="10" name="MODIFIED_DATE"/>
+        </property>
+        <property name="dataSource" type="string">
+            <column length="40" name="DATA_SOURCE" not-null="true"/>
+        </property>
+        <property name="entityStatus" type="string">
+            <column length="40" name="ENTITY_STATUS" not-null="true"/>
+        </property>
+        <property name="entityType" type="string">
+            <column length="40" name="ENTITY_TYPE" not-null="true"/>
+        </property>
+      
+    </class>
 </hibernate-mapping>
